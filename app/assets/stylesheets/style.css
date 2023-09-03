@@ -112,3 +112,13 @@ body {
 }
 
 /* index */
+.index-body{
+  display: flex;
+  justify-content: space-around;
+}
+
+.industry-list, .company-list {
+  background-color: #FFFFFF;
+  height: 460px;
+  width: 400px;
+}

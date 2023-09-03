@@ -1,10 +1,28 @@
-<h1>Companies</h1>
+
 
 <div>
 industries
 </div>
-<ul>
-  <% @companies.each do |company_name, id| %>
+
+<div class="index-body">
+ <div class="industry-list">
+    <ul>
+        <li>Life and Health Insurance</li>
+        <li>Non-life Insurance</li>
+        <li>Financial Services</li>
+        <li>Logistics</li>
+        <li>Pharmaceuticals</li>
+        <li>Retail</li>
+    </ul>
+  </div>
+
+
+
+  <div class="company-list">
+   <ul>
+    <% @companies.each do |company_name, id| %>
     <li><%= link_to company_name, record_path(id) %></li>
-  <% end %>
-</ul>
+    <% end %>
+   </ul>
+  </div>
+</div>
