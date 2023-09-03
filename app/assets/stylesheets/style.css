@@ -1,0 +1,110 @@
+
+header.header {
+  padding: 7px;
+  border-bottom: 1px solid #D8D8D8;
+  background-color: #f0af8c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 50px;
+}
+
+header.header div.header__bar.row {
+  position: relative;
+}
+
+header.header div.header__bar.row h1.grid-6 {
+  font-size: 20px;
+  line-height: 41px;
+  float: left;
+}
+
+header.header div.header__bar.row h1.grid-6 a {
+  display: block;
+  font-family: 'Roboto';
+}
+
+header.header div.header__bar.row div.grid-6 {
+  float: right;
+  text-align: right;
+}
+
+header.header div.header__bar.row div.grid-6 a.post {
+  width: 120px;
+  display: inline-left;
+  margin-left: 10px;
+}
+
+header.header .user_nav {
+  position: relative;
+  height: 100px;
+  right: 0;
+}
+
+header.header .user_nav span {
+  top: 5px;
+  display: block;
+  float: left;
+  margin-left: 30px;
+  width: 150px;
+  height: 50px;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+}
+
+header.header .user_nav span:after {
+  content: '▼';
+  font-size: .7em;
+  margin-left: -4px;
+}
+
+header.header .user_nav span:hover ul {
+  color: #57C3E9;
+  display: block;
+}
+
+header.header .user_nav ul {
+  display: none;
+  position: absolute;
+  top: 46px;
+  right: 0;
+  border-left: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header.header .user_nav ul li {
+  background-color: #f0f0f0;
+}
+
+header.header .user_nav ul li a {
+  display: block;
+  padding: 10px 20px;
+  text-align: left;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+
+
+/* ヘッダーの記述ここまで */
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body {
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  color: #666;
+  font-family: 'Roboto', 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  margin: 0;
+}
+

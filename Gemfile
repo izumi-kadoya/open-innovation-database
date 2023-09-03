@@ -72,3 +72,4 @@ group :test do
 end
 gem 'carrierwave', '~> 3.0'
 gem 'pry-rails'
+gem 'devise'
