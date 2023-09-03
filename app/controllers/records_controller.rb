@@ -1,7 +1,7 @@
 require 'csv'
 class RecordsController < ApplicationController
   def index
-    @companies = Record.distinct.pluck(:company_name, :id)
+    @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
   end
 
   def show

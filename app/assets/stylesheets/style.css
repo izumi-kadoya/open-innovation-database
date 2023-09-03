@@ -90,7 +90,10 @@ header.header .user_nav ul li a {
 
 
 /* ヘッダーの記述ここまで */
-
+body {
+  margin-top: 50px;
+  background-color: #F3f3f3;
+}
 
 
 h1,
@@ -105,6 +108,7 @@ body {
   font-size: 16px;
   color: #666;
   font-family: 'Roboto', 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
-  margin: 0;
+
 }
 
+/* index */
