@@ -1,0 +1,8 @@
+<h1>Companies</h1>
+
+
+<ul>
+  <% @companies.each do |company_name, id| %>
+    <li><%= link_to company_name, record_path(id) %></li>
+  <% end %>
+</ul>

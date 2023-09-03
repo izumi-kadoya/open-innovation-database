@@ -1,0 +1,5 @@
+<h1>Upload CSV</h1>
+<%= form_for @record, html: { multipart: true } do |f| %>
+  <%= f.file_field :csv %>
+  <%= f.submit "Upload" %>
+<% end %>
