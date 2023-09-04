@@ -1,0 +1,24 @@
+<h1><%= @record.company_name %></h1>
+
+<h2>Business Partner Details</h2>
+<ul>
+    <li>URL: <%= @record.url %></li>
+    <li>Country: <%= @record.country %></li>
+    <li>City: <%= @record.city %></li>
+    <li>Description: <%= @record.description %></li>
+    <!-- 他の情報も追加する -->
+</ul>
+
+<h3>▶️Description</h3>
+<div id="description-content" style="display: none;">
+  <%= @record.description %>
+</div>
+
+<h3>▶️Article Summary</h3>
+<div id="article-summary-content" style="display: none;">
+  <%= @record.article_summary %>
+</div>
+
+<%= link_to "Back to Company", record_path(@record) %>
+
+<%= javascript_include_tag 'details_behavior' %>

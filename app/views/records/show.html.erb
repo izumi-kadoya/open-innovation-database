@@ -1,1 +1,10 @@
 <h1><%= @record.company_name %></h1>
+
+<h2>Business Partners</h2>
+<ul>
+  <% @related_records.each do |related_record| %>
+    <li>
+      <%= link_to related_record.business_partner, partner_details_record_path(related_record) %>
+    </li>
+  <% end %>
+</ul>
