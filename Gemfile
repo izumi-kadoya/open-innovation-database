@@ -70,6 +70,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :production do
+  gem 'pg'
+end
+
 gem 'carrierwave', '~> 3.0'
 gem 'pry-rails'
 gem 'devise'
