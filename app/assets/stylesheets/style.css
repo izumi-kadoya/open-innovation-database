@@ -122,3 +122,14 @@ body {
   height: 460px;
   width: 400px;
 }
+
+
+/* 詳細画面 */
+.business-partner-index{
+  display: flex;
+  float: left;
+}
+
+.small-date {
+  font-size: 10px;
+}

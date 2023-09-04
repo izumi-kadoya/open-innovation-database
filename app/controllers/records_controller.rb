@@ -58,14 +58,13 @@ class RecordsController < ApplicationController
       :city
     )
   end
-
+  
   def from_excel_serial_date(serial_date)
-    # Excelのシリアル日付値の基点は1900年1月1日
-    base_date = Date.new(1900, 1, 1)
-    adjusted_serial_date = serial_date.to_i - (serial_date.to_i > 59 ? 2 : 1) # Excelの1900年2月29日のバグを考慮
+    base_date = Date.new(1899, 12, 31)  
+    adjusted_serial_date = serial_date.to_i
+    adjusted_serial_date -= 1 if adjusted_serial_date > 60 # Excelの1900-02-29のバグを考慮
     base_date + adjusted_serial_date.days
   end
-
   def map_row_to_record(row)
     {
       company_industry: row['company_industry'],

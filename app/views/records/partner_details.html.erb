@@ -2,7 +2,7 @@
 
 <h2>Business Partner Details</h2>
 <ul>
-    <li>URL: <%= @record.url %></li>
+<li><%= link_to "#{@record.url}", @record.url %></li>
     <li>Country: <%= @record.country %></li>
     <li>City: <%= @record.city %></li>
     <li>Description: <%= @record.description %></li>
