@@ -4,28 +4,7 @@
 <ul>
   <% @related_records.each do |related_record| %>
     <li>
-      <span class="hover-trigger" data-toggle="details-<%= related_record.id %>">
-        <%= related_record.business_partner %>
-      </span>
-      <div id="details-<%= related_record.id %>" class="details" style="display: none;">
-        <p>Founded Year: <%= related_record.founded_year %></p>
-        <p>Total funding: <%= related_record.total_funding %></p>
-        <p>All investors: <%= related_record.all_investors %></p>
-        <p>Latest Funding date: <%= related_record.latest_funding_date %></p>
-        <p>Latest Funding round: <%= related_record.latest_funding_round %></p>
-        <p>Latest Funding investors: <%= related_record.latest_funding_investors %></p>
-        <p>Latest Valuation: <%= related_record.latest_valuation %></p>
-        <p>Exit date: <%= related_record.exit_date %></p>
-        <p>Acquirers: <%= related_record.acquirers %></p>
-      </div>
+      <%= link_to related_record.business_partner, partner_details_record_path(related_record) %>
     </li>
   <% end %>
 </ul>
-
-<h2>Company Details</h2>
-<p>Company Type: <%= @record.company_type %></p>
-<p>Country: <%= @record.country %></p>
-<p>News Snippet: <%= @record.news_snippet %></p>
-<!-- 他の属性も同様に表示 -->
-
-<%= javascript_include_tag 'detail' %>

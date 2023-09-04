@@ -26,6 +26,9 @@ class RecordsController < ApplicationController
     end
   end
 
+  def partner_details
+    @record = Record.find(params[:id])
+  end
 
   private
 
