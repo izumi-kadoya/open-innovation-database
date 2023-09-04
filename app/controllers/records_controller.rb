@@ -6,6 +6,7 @@ class RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
+    @related_records = Record.where(company_name: @record.company_name)
   end
 
   def new
