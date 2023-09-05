@@ -27,7 +27,7 @@
 
 
 
-   <%= link_to "#{@record.url}", @record.url %> <br><br>
+<%= link_to "#{@record.url}", @record.url, target: "_blank" %> <br><br>
    <p><%= @record.article_date %></p>
    <%= @record.city %>,<%= @record.country %> <br>
    <%= @record.sub_industry %>(Sub-industry)<br><br>
