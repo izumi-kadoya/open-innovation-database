@@ -1,22 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-  let hoverTriggers = document.querySelectorAll(".hover-trigger-description");
-  hoverTriggers.forEach(trigger => {
-      trigger.addEventListener("mouseover", function() {
-          let targetId = this.getAttribute("data-toggle");
-          document.getElementById(targetId).style.display = "block";
-      });
-      trigger.addEventListener("mouseout", function() {
-          let targetId = this.getAttribute("data-toggle");
-          document.getElementById(targetId).style.display = "none";
-      });
-  });
+document.addEventListener('DOMContentLoaded', function() {
 
-  let clickTriggers = document.querySelectorAll(".click-trigger-summary");
-  clickTriggers.forEach(trigger => {
-      trigger.addEventListener("click", function() {
-          let targetId = this.getAttribute("data-toggle");
-          let targetElement = document.getElementById(targetId);
-          targetElement.style.display = (targetElement.style.display == "none") ? "block" : "none";
-      });
+    // business_descriptionを表示
+    document.getElementById('show-description').addEventListener('click', function() {
+      const description = '<%= @record.business_description %>'; 
+      document.querySelector('.more-description').textContent = description;
+    });
+  
+    // article_summaryを表示
+    document.getElementById('show-summary').addEventListener('click', function() {
+      const summary = '<%= @record.article_summary %>'; 
+      document.querySelector('.more-description').textContent = summary;
+    });
+  
   });
-});
+  

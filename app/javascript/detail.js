@@ -1,42 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Hover-trigger behavior
-  document.querySelectorAll('.hover-trigger').forEach(function(trigger) {
-    trigger.addEventListener('click', function() {
-      var targetId = this.getAttribute('data-toggle');
-      var targetElement = document.getElementById(targetId);
-      if (targetElement.style.display === 'none') {
-        targetElement.style.display = 'block';
-      } else {
-        targetElement.style.display = 'none';
-      }
-    });
+document.addEventListener('turbo:load', function() {
+
+  // business_descriptionを表示
+  document.getElementById('show-description').addEventListener('click', function() {
+    const description = document.getElementById('show-description').getAttribute('data-description');
+    document.querySelector('.more-description').textContent = description;
   });
 
-  // More-description hover behavior
-  document.querySelectorAll('.more-description-trigger').forEach(function(trigger) {
-    trigger.addEventListener('mouseover', function() {
-      var targetId = this.getAttribute('data-toggle');
-      var targetElement = document.getElementById(targetId);
-      targetElement.style.display = 'block';
-    });
-
-    trigger.addEventListener('mouseout', function() {
-      var targetId = this.getAttribute('data-toggle');
-      var targetElement = document.getElementById(targetId);
-      targetElement.style.display = 'none';
-    });
+  // article_summaryを表示
+  document.getElementById('show-summary').addEventListener('click', function() {
+    const summary = document.getElementById('show-summary').getAttribute('data-summary');
+    document.querySelector('.more-description').textContent = summary;
   });
 
-  // Article-summary click behavior
-  document.querySelectorAll('.article-summary-trigger').forEach(function(trigger) {
-    trigger.addEventListener('click', function() {
-      var targetId = this.getAttribute('data-toggle');
-      var targetElement = document.getElementById(targetId);
-      if (targetElement.style.display === 'none') {
-        targetElement.style.display = 'block';
-      } else {
-        targetElement.style.display = 'none';
-      }
-    });
-  });
 });
