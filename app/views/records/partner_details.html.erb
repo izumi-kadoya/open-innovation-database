@@ -5,7 +5,27 @@
 <div class="bp-detail-body">
 
   <div class="bp-detail-left">
-   <h1><%= @record.business_partner%> </h1>
+
+<ul>
+  <li>
+    <span class="hover-trigger" data-toggle="details-<%= @record.id %>">
+     <h1><%= @record.business_partner %></h1>
+    </span>
+    <div id="details-<%= @record.id %>" class="details" style="display: none;">
+      <p>・Founded Year: <%= @record.founded_year %></p>
+      <p>・Total funding: <%= @record.total_funding %></p>
+      <p>・All investors: <%= @record.all_investors %></p>
+      <p>・Latest Funding date: <%= @record.latest_funding_date %></p>
+      <p>・Latest Funding round: <%= @record.latest_funding_round %></p>
+      <p>・Latest Funding investors: <%= @record.latest_funding_investors %></p>
+      <p>・Latest Valuation: <%= @record.latest_valuation %></p>
+      <p>・Exit date: <%= @record.exit_date %></p>
+      <p>・Acquirers: <%= @record.acquirers %></p>
+    </div>
+  </li>
+</ul>
+
+
 
    <%= link_to "#{@record.url}", @record.url %> <br><br>
    <p><%= @record.article_date %></p>

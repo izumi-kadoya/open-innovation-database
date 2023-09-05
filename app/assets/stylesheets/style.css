@@ -148,6 +148,23 @@ body {
 .bp-detail-left p{
   font-size: 25px;
 }
+.bp-detail-left li {
+  position: relative;
+}
+.details {
+  display: none; /* デフォルトでは非表示 */
+  position: absolute; /* 要素を絶対位置に設定 */
+  top: 0; 
+  width:900px;
+  left: 100%; /* hover-trigger要素の右端から開始する */
+  background-color: #fff; /* 背景色を設定 */
+  border: 1px solid #ccc; /* 境界線を設定 */
+  padding: 10px; /* パディングを設定 */
+  z-index: 10; /* 他の要素より上に表示する */
+}
+.bp-detail-left p{
+  font-size: 12px;
+}
 .bp-detail-right{
   margin-top: 5px;
   margin-left: 10px;
@@ -165,4 +182,5 @@ body {
 .more-description{
   margin: 40px;
   background-color: #FFFFFF;
+  padding: 10px;
 }
