@@ -87,11 +87,11 @@ header.header .user_nav ul li a {
   border-bottom: 1px solid #d8d8d8;
 }
 
-
-
 /* ヘッダーの記述ここまで */
+
 body {
   margin-top: 50px;
+  margin-left: 20px;
   background-color: #F3f3f3;
 }
 
@@ -104,11 +104,10 @@ h5,
 h6,
 body {
   line-height: 1.57;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
-  font-family: 'Roboto', 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
-
+  font-family: 'Poppins', sans-serif;
 }
 
 /* index */
@@ -132,4 +131,38 @@ body {
 
 .small-date {
   font-size: 10px;
+}
+
+/* business partner詳細画面 */
+.bp-detail-body{
+  margin: 40px;
+  display: flex;
+}
+.bp-detail-left{
+  width: 25%;
+}
+.bp-detail-left h1{
+  font-size: 44px;
+  font-weight: 700;
+}
+.bp-detail-left p{
+  font-size: 25px;
+}
+.bp-detail-right{
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 75%;
+}
+.description-content{
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+.comment-box{
+  margin-top: 25px;
+  background-color: #FFFFFF;
+  height: 130px;
+}
+.more-description{
+  margin: 40px;
+  background-color: #FFFFFF;
 }

@@ -1,24 +1,39 @@
+
+<h1>業種を入力する＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h1>
 <h1><%= @record.company_name %></h1>
 
-<h2>Business Partner Details</h2>
-<ul>
-<li><%= link_to "#{@record.url}", @record.url %></li>
-    <li>Country: <%= @record.country %></li>
-    <li>City: <%= @record.city %></li>
-    <li>Description: <%= @record.description %></li>
-    <!-- 他の情報も追加する -->
-</ul>
+<div class="bp-detail-body">
 
-<h3>▶️Description</h3>
-<div id="description-content" style="display: none;">
-  <%= @record.description %>
+  <div class="bp-detail-left">
+   <h1><%= @record.business_partner%> </h1>
+
+   <%= link_to "#{@record.url}", @record.url %> <br><br>
+   <p><%= @record.article_date %></p>
+   <%= @record.city %>,<%= @record.country %> <br>
+   <%= @record.sub_industry %>(Sub-industry)<br><br>
+<h3 id="show-description" data-description="<%= @record.business_description %>">▶️ For more description</h3>
+<h3 id="show-summary" data-summary="<%= @record.article_summary %>">▶️ Article Summary</h3>
+
+ </div>
+ 
+ <div class="bp-detail-right">
+   <div class="description-content">
+    <%= @record.description %>
+   </div>
+
+   <div class="comment-box">
+   <div class="comment">
+     ここにコメントを表示
+   </div>
+   <div class="comment-write">
+   コメント入力欄
+   </div>
+ </div>
+ </div>
+
+
+
 </div>
 
-<h3>▶️Article Summary</h3>
-<div id="article-summary-content" style="display: none;">
-  <%= @record.article_summary %>
+<div class="more-description">
 </div>
-
-<%= link_to "Back to Company", record_path(@record) %>
-
-<%= javascript_include_tag 'details_behavior' %>
