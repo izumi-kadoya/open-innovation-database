@@ -10,6 +10,10 @@ header.header {
   z-index: 5;
   height: 50px;
 }
+.grid-6{
+  font-weight: bold;
+}
+
 
 header.header div.header__bar.row {
   position: relative;

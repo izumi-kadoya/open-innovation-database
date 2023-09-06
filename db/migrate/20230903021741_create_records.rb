@@ -6,7 +6,6 @@ class CreateRecords < ActiveRecord::Migration[7.0]
       t.date :article_date
       t.string :business_partner
       t.string :country
-      t.text :news_snippet
       t.string :url
       t.text :description
       t.text :business_description

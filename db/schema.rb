@@ -17,7 +17,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
     t.date "article_date"
     t.string "business_partner"
     t.string "country"
-    t.text "news_snippet"
     t.string "url"
     t.text "description"
     t.text "business_description"
