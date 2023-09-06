@@ -160,11 +160,11 @@ body {
   position: absolute; /* 要素を絶対位置に設定 */
   top: 0; 
   width:900px;
-  left: 100%; /* hover-trigger要素の右端から開始する */
-  background-color: #fff; /* 背景色を設定 */
-  border: 1px solid #ccc; /* 境界線を設定 */
-  padding: 10px; /* パディングを設定 */
-  z-index: 10; /* 他の要素より上に表示する */
+  left: 100%; 
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+  padding: 10px;
+  z-index: 10; 
 }
 .bp-detail-left p{
   font-size: 12px;
@@ -178,13 +178,19 @@ body {
   background-color: #FFFFFF;
   padding: 10px;
 }
+/* コメント */
 .comment-box{
+  width: 100%;
   margin-top: 25px;
   background-color: #FFFFFF;
   height: 130px;
+}
+.comment-write{
+  width: 100%;
 }
 .more-description{
   margin: 40px;
   background-color: #FFFFFF;
   padding: 10px;
 }
+

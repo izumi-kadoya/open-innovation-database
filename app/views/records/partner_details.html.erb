@@ -1,6 +1,6 @@
-
 <h1>業種を入力する＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h1>
 <h1><%= @record.company_name %></h1>
+
 
 <div class="bp-detail-body">
 
@@ -43,10 +43,23 @@
 
    <div class="comment-box">
    <div class="comment">
-     ここにコメントを表示
+      <h4>comment</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    </div>
    </div>
    <div class="comment-write">
-   コメント入力欄
+<%# if user_signed_in? %>
+  <%= form_with(model: [@record, @comment], local: true) do |form| %>
+    <%= form.text_area :text, placeholder: "comment", rows: "2" %>
+    <%= form.submit "SEND" %>
+  <% end %>
+<%# else %>
+<%# end %>
    </div>
  </div>
  </div>

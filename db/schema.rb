@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_023409) do
+  create_table "comments", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "record_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "records", charset: "utf8mb4", force: :cascade do |t|
     t.string "company_industry"
     t.string "company_name"
@@ -37,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
+    t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
