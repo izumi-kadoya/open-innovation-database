@@ -28,5 +28,15 @@ industries
    </ul>
   </div>
 
+  <div class="new_comments">
+  <h3>Recent Comments</h3>
+  <% @recent_comments.each do |comment| %>
+    <p>
+    <%= comment.user.nickname%>：
+      <%= link_to truncate(comment.text, length: 35, omission: '...'), partner_details_record_path(comment.record_id) %> 
+     <small>(Updated at: <%= comment.updated_at.strftime("%Y-%m-%d %H:%M") %>)</small>
+    </p>
+  <% end %>
+  </div>
 
 </div>

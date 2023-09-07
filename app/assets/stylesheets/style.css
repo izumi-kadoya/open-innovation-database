@@ -70,9 +70,17 @@ body {
 }
 
 .industry-list, .company-list {
+  padding: 10px;
   background-color: #FFFFFF;
   height: 460px;
-  width: 400px;
+  width: 300px;
+}
+
+/* indexのコメント欄 */
+.new_comments{
+  padding: 10px;
+  background-color: #FFFFFF;
+  width: 360px;
 }
 
 
