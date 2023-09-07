@@ -41,56 +41,6 @@ header.header div.header__bar.row div.grid-6 a.post {
   margin-left: 10px;
 }
 
-header.header .user_nav {
-  position: relative;
-  height: 100px;
-  right: 0;
-}
-
-header.header .user_nav span {
-  top: 5px;
-  display: block;
-  float: left;
-  margin-left: 30px;
-  width: 150px;
-  height: 50px;
-  font-size: 1em;
-  cursor: pointer;
-  position: relative;
-}
-
-header.header .user_nav span:after {
-  content: '▼';
-  font-size: .7em;
-  margin-left: -4px;
-}
-
-header.header .user_nav span:hover ul {
-  color: #57C3E9;
-  display: block;
-}
-
-header.header .user_nav ul {
-  display: none;
-  position: absolute;
-  top: 46px;
-  right: 0;
-  border-left: 1px solid #d8d8d8;
-  border-right: 1px solid #d8d8d8;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-header.header .user_nav ul li {
-  background-color: #f0f0f0;
-}
-
-header.header .user_nav ul li a {
-  display: block;
-  padding: 10px 20px;
-  text-align: left;
-  border-bottom: 1px solid #d8d8d8;
-}
-
 /* ヘッダーの記述ここまで */
 
 body {
