@@ -1,9 +1,5 @@
 <h1>業種を入力する＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h1>
-<h1><%= @record.company_name %></h1>
-
-
 <div class="bp-detail-body">
-
   <div class="bp-detail-left">
 
 <ul>
@@ -27,7 +23,8 @@
 
 
 
-<%= link_to "#{@record.url}", @record.url, target: "_blank" %> <br><br>
+<% url = @record.url.start_with?('http://', 'https://') ? @record.url : "http://#{@record.url}" %>
+<%= link_to @record.url,  url, target: "_blank" %><br><br>
    <p><%= @record.article_date %></p>
    <%= @record.city %>,<%= @record.country %> <br>
    <%= @record.sub_industry %>(Sub-industry)<br><br>

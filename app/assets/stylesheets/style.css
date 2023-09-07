@@ -27,7 +27,6 @@ header.header div.header__bar.row h1.grid-6 {
 
 header.header div.header__bar.row h1.grid-6 a {
   display: block;
-  font-family: 'Roboto';
 }
 
 header.header div.header__bar.row div.grid-6 {
@@ -58,7 +57,7 @@ h5,
 h6,
 body {
   line-height: 1.57;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.03em;
   font-size: 16px;
   color: #666;
   font-family: 'Poppins', sans-serif;
@@ -115,6 +114,7 @@ body {
   border: 1px solid #ccc; 
   padding: 10px;
   z-index: 10; 
+  font-size: 12px;
 }
 .bp-detail-left p{
   font-size: 12px;
