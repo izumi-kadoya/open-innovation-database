@@ -3,6 +3,7 @@ require 'csv'
 class RecordsController < ApplicationController
   def index
     @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
+    @recent_comments = Comment.order(updated_at: :desc).limit(10)
   end
 
   def show
