@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.create(comment_params)
+    @record = Record.find(params[:id])
+    redirect_to record_path(@record)
   end
 
   private
