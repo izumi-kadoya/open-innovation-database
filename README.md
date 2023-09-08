@@ -1,24 +1,37 @@
-# README
+# アプリケーション名
+open-innovation-database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+csv形式の企業データをアップロードし、複数人で確認できる。編集やコメントもできる。
 
-Things you may want to cover:
+# URL
 
-* Ruby version
+# テスト用アカウント
+・Basic認証ID
+・Basic認証PW
+・メールアドレス
+・パスワード
+・アップロード用csv
+　※但し、こちらのアプリケーションは実際に利用予定のため、ローカルのみでアップロードを行ってください。本番環境でのアップロードは行わないでください。
+ 
+# 利用方法
+## csvのアップロード
 
-* System dependencies
+## 
 
-* Configuration
+# アプリケーションを作成した背景
 
-* Database creation
+# 洗い出した要件、画面遷移図
 
-* Database initialization
+# データベース設計
 
-* How to run the test suite
+# 実装予定の機能
 
-* Services (job queues, cache servers, search engines, etc.)
+# 開発環境
 
-* Deployment instructions
+#
+# ローカルでの作動方法
 
-* ...
+# RPAで行うこと
+
+# 工夫したポイント
