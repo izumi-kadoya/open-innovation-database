@@ -30,8 +30,7 @@ class RecordsController < ApplicationController
   def partner_details
     @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
-    @comment = Comment.new
-    @comments = @record.comments.includes(:user)
+    @comment = @record.comment || Comment.new
   end
 
   private
