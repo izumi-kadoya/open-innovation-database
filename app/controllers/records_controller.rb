@@ -3,7 +3,6 @@ require 'csv'
 class RecordsController < ApplicationController
   def index
     @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
-    @recent_comments = Comment.order(updated_at: :desc).limit(10)
   end
 
   def show
@@ -30,7 +29,6 @@ class RecordsController < ApplicationController
   def partner_details
     @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
-    @comment = @record.comment || Comment.new
   end
 
   private
@@ -58,6 +56,10 @@ class RecordsController < ApplicationController
       :acquirers,
       :latest_valuation,
       :city
+      :comment1
+      :comment2
+      :comment3
+      :comment4
     )
   end
   
@@ -88,7 +90,11 @@ class RecordsController < ApplicationController
       exit_date: from_excel_serial_date(row['exit_date']),
       acquirers: row['acquirers'],
       latest_valuation: row['latest_valuation'].to_d,
-      city: row['city']
+      city: row['city'],
+      comment1: row['comment1'],
+      comment2: row['comment2'],
+      comment3: row['comment3'],
+      comment4: row['comment4']
     }
   end
 end
