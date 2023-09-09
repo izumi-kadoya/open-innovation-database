@@ -55,10 +55,10 @@ class RecordsController < ApplicationController
       :exit_date,
       :acquirers,
       :latest_valuation,
-      :city
-      :comment1
-      :comment2
-      :comment3
+      :city,
+      :comment1,
+      :comment2,
+      :comment3,
       :comment4
     )
   end
