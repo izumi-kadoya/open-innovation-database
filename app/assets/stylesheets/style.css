@@ -88,6 +88,7 @@ body {
 .business-partner-index{
   display: flex;
   float: left;
+  width:100%;
 }
 
 .small-date {
@@ -142,6 +143,29 @@ body {
   margin-top: 25px;
   background-color: #FFFFFF;
   height: 130px;
+}
+.comment-box{
+  width: 100%;
+  margin-top: 25px;
+  height: 140px;
+}
+
+.comment123{
+  display: flex;
+  height: 30px;
+  justify-content:space-evenly;
+}
+.comment1,.comment2,.comment3{
+  background-color: #8cf0be;
+  border-color: #747474;
+  border-radius: 5px;
+  width: 140px;
+  height: 24px;
+  margin: 5px;
+}
+.comment4{
+  background-color: #8cf0be;
+  height:100px;
 }
 .comment-write{
   width: 100%;

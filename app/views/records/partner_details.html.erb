@@ -39,17 +39,25 @@
    </div>
 
    <div class="comment-box">
-<div class="comment">
+    <div class="comment123">
+      <div class="comment1">
+        <%= @record.comment1%> 
+      </div>
+      <div class="comment2">
+        <%= @record.comment2%> 
+      </div>
+      <div class="comment3">
+        <%= @record.comment3%> 
+      </div>
+          <%= link_to 'Edit', edit_record_comment_path(@record), class: 'btn btn-edit' %>
+    </div>
+<div class="comment4">
   <h4>comment</h4>
+    <p><%= @record.comment4 %></p>
+    </div>
 
-  <% if @comment && @comment.text.present? %>
-    <p><%= @comment.text %></p>
-    <%= link_to 'Edit', edit_record_comment_path(@record, @comment), class: 'btn btn-edit' %>
-  <% else %>
-    <p>No comment available.</p>
-    <%= link_to 'Create', new_record_comment_path(@record), class: 'btn btn-create' %>
-  <% end %>
-</div>
+
+
 
    <div class="comment-write">
    </div>

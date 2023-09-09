@@ -26,6 +26,12 @@ class RecordsController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+  end
+
   def partner_details
     @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
