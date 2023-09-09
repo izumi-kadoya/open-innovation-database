@@ -1,4 +1,4 @@
-<h1>業種を入力する＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h1>
+<h6>業種を入力する＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h6>
 <div class="bp-detail-body">
   <div class="bp-detail-left">
 
@@ -39,9 +39,19 @@
    </div>
 
    <div class="comment-box">
-<div class="comment">
+    <div class="comment123">
+      <div class="comment1">
+      comment1
+      </div>
+      <div class="comment2">
+      comment2
+      </div>
+      <div class="comment3">
+      comment3
+      </div>
+    </div>
+<div class="comment4">
   <h4>comment</h4>
-
   <% if @comment && @comment.text.present? %>
     <p><%= @comment.text %></p>
     <%= link_to 'Edit', edit_record_comment_path(@record, @comment), class: 'btn btn-edit' %>
