@@ -10,39 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_023409) do
-  create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.integer "record_id"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "records", charset: "utf8", force: :cascade do |t|
-    t.string "company_industry"
-    t.string "company_name"
-    t.date "article_date"
-    t.string "business_partner"
-    t.string "country"
-    t.string "url"
-    t.text "description"
-    t.text "business_description"
-    t.text "article_summary"
-    t.string "sub_industry"
-    t.integer "founded_year"
-    t.string "latest_funding_round"
-    t.date "latest_funding_date"
-    t.text "latest_funding_investors"
-    t.decimal "total_funding", precision: 10
-    t.text "all_investors"
-    t.date "exit_date"
-    t.text "acquirers"
-    t.decimal "latest_valuation", precision: 10
-    t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
