@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
   create_table "records", charset: "utf8", force: :cascade do |t|
+    t.string "csv"
     t.string "company_industry"
     t.string "company_name"
     t.date "article_date"

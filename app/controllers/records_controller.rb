@@ -15,16 +15,31 @@ class RecordsController < ApplicationController
   end
 
   def create
-    uploaded_io = record_params[:csv]
+    @record = Record.new
+    uploaded_io = params[:record][:csv]
+    
     if uploaded_io
+      failed_records = []  # 保存に失敗した行のエラーメッセージを保存するための配列
       CSV.foreach(uploaded_io.path, headers: true) do |row|
-        Record.create(map_row_to_record(row))
+        record = Record.new(map_row_to_record(row))
+        unless record.save  # 保存が失敗した場合、エラーメッセージを配列に追加
+          failed_records << record.errors.full_messages.join(", ")
+        end
       end
-      redirect_to records_path, notice: 'CSV was successfully uploaded.'
+  
+      if failed_records.empty?
+        redirect_to records_path, notice: 'CSV was successfully uploaded.'
+      else
+        # 保存に失敗したレコードのエラーメッセージを表示
+        flash.now[:alert] = "Failed to save some records: #{failed_records.join('. ')}"
+        render :new
+      end
     else
-      puts "Failed to save record: #{record.errors.full_messages.join(", ")}"
+      flash.now[:alert] = "No file uploaded"
+      render :new
     end
   end
+  
 
   def edit
   end
@@ -32,7 +47,7 @@ class RecordsController < ApplicationController
   def update
     record = Record.find(params[:id])
     record.update(record_params)
-    redirect_to records_path
+    redirect_to partner_details_record_path
   end
 
   def partner_details

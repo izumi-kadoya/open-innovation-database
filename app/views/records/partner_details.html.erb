@@ -38,23 +38,45 @@
     <%= @record.description %>
    </div>
 
-   <div class="comment-box">
+<%= form_for @record, html: { id: 'edit-comment-form', style: 'display: none;' } do |f| %>
+  <div class="comment-box">
     <div class="comment123">
       <div class="comment1">
-        <%= @record.comment1%> 
+        <%= f.text_area :comment1 %>
       </div>
       <div class="comment2">
-        <%= @record.comment2%> 
+        <%= f.text_area :comment2 %>
       </div>
       <div class="comment3">
-        <%= @record.comment3%> 
+        <%= f.text_area :comment3 %>
       </div>
-          <%= link_to 'Edit', edit_record_path(@record), class: 'btn btn-edit' %>
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
     </div>
-<div class="comment4">
-  <h4>note by Sozo members</h4>
+    <div class="comment4">
+      <h4>note by Sozo members</h4>
+      <%= f.text_area :comment4 %>
+    </div>
+  </div>
+<% end %>
+
+<div class="comment-box view-mode">
+  <div class="comment123">
+    <div class="comment1">
+      <p><%= @record.comment1%></p>
+    </div>
+    <div class="comment2">
+      <p><%= @record.comment2%></p>
+    </div>
+    <div class="comment3">
+      <p><%= @record.comment3%></p>
+    </div>
+<button class="btn btn-edit">Edit</button>
+  </div>
+  <div class="comment4">
+    <h4>note by Sozo members</h4>
     <p><%= @record.comment4 %></p>
-    </div>
+  </div>
+</div>
 
 
 

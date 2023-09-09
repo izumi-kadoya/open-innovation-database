@@ -1,6 +1,7 @@
 class CreateRecords < ActiveRecord::Migration[7.0]
   def change
     create_table :records do |t|
+      t.string :csv
       t.string :company_industry
       t.string :company_name
       t.date :article_date
