@@ -1,12 +1,12 @@
 require 'csv'
 
 class RecordsController < ApplicationController
+  before_action :set_record, only: [:show, :edit,:partner_details]
   def index
     @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
   end
 
   def show
-    @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
   end
 
@@ -28,16 +28,22 @@ class RecordsController < ApplicationController
 
   def edit
   end
-  
+
   def update
+    record = Record.find(params[:id])
+    record.update(record_params)
+    redirect_to records_path
   end
 
   def partner_details
-    @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
   end
 
   private
+
+  def set_record
+    @record = Record.find(params[:id])
+  end
 
   def record_params
     params.require(:record).permit(
