@@ -21,6 +21,10 @@ class CreateRecords < ActiveRecord::Migration[7.0]
       t.text :acquirers
       t.decimal :latest_valuation
       t.string :city
+      t.string :comment1
+      t.string :comment2
+      t.string :comment3
+      t.text :comment4
       t.timestamps
     end
   end
