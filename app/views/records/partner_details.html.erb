@@ -38,27 +38,45 @@
     <%= @record.description %>
    </div>
 
-   <div class="comment-box">
-<div class="comment">
-  <h4>comment</h4>
+<%= form_for @record, html: { id: 'edit-comment-form', style: 'display: none;' } do |f| %>
+  <div class="comment-box">
+    <div class="comment123">
+      <div class="comment1">
+        <%= f.text_area :comment1 %>
+      </div>
+      <div class="comment2">
+        <%= f.text_area :comment2 %>
+      </div>
+      <div class="comment3">
+        <%= f.text_area :comment3 %>
+      </div>
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+    <div class="comment4">
+      <%= f.text_area :comment4 %>
+    </div>
+  </div>
+<% end %>
 
-  <% if @comment && @comment.text.present? %>
-    <p><%= @comment.text %></p>
-    <%= link_to 'Edit', edit_record_comment_path(@record, @comment), class: 'btn btn-edit' %>
-  <% else %>
-    <p>No comment available.</p>
-    <%= link_to 'Create', new_record_comment_path(@record), class: 'btn btn-create' %>
-  <% end %>
+<div class="comment-box view-mode">
+  <div class="comment123">
+    <div class="comment1">
+      <p><%= @record.comment1%></p>
+    </div>
+    <div class="comment2">
+      <p><%= @record.comment2%></p>
+    </div>
+    <div class="comment3">
+      <p><%= @record.comment3%></p>
+    </div>
+<button class="btn btn-edit">Edit</button>
+  </div>
+  <div class="comment4">
+    <p><%= @record.comment4 %></p>
+  </div>
 </div>
 
-   <div class="comment-write">
-   </div>
- </div>
- </div>
-
-
-
 </div>
-
+</div>
 <div class="more-description">
 </div>

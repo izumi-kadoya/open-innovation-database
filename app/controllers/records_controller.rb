@@ -1,13 +1,12 @@
 require 'csv'
 
 class RecordsController < ApplicationController
+  before_action :set_record, only: [:show, :edit,:partner_details]
   def index
     @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
-    @recent_comments = Comment.order(updated_at: :desc).limit(10)
   end
 
   def show
-    @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
   end
 
@@ -16,24 +15,50 @@ class RecordsController < ApplicationController
   end
 
   def create
-    uploaded_io = record_params[:csv]
+    @record = Record.new
+    uploaded_io = params[:record][:csv]
+    
     if uploaded_io
+      failed_records = []  # 保存に失敗した行のエラーメッセージを保存するための配列
       CSV.foreach(uploaded_io.path, headers: true) do |row|
-        Record.create(map_row_to_record(row))
+        record = Record.new(map_row_to_record(row))
+        unless record.save  # 保存が失敗した場合、エラーメッセージを配列に追加
+          failed_records << record.errors.full_messages.join(", ")
+        end
       end
-      redirect_to records_path, notice: 'CSV was successfully uploaded.'
+  
+      if failed_records.empty?
+        redirect_to records_path, notice: 'CSV was successfully uploaded.'
+      else
+        # 保存に失敗したレコードのエラーメッセージを表示
+        flash.now[:alert] = "Failed to save some records: #{failed_records.join('. ')}"
+        render :new
+      end
     else
-      puts "Failed to save record: #{record.errors.full_messages.join(", ")}"
+      flash.now[:alert] = "No file uploaded"
+      render :new
     end
+  end
+  
+
+  def edit
+  end
+
+  def update
+    record = Record.find(params[:id])
+    record.update(record_params)
+    redirect_to partner_details_record_path
   end
 
   def partner_details
-    @record = Record.find(params[:id])
     @related_records = Record.where(company_name: @record.company_name)
-    @comment = @record.comment || Comment.new
   end
 
   private
+
+  def set_record
+    @record = Record.find(params[:id])
+  end
 
   def record_params
     params.require(:record).permit(
@@ -57,7 +82,11 @@ class RecordsController < ApplicationController
       :exit_date,
       :acquirers,
       :latest_valuation,
-      :city
+      :city,
+      :comment1,
+      :comment2,
+      :comment3,
+      :comment4
     )
   end
   
@@ -88,7 +117,11 @@ class RecordsController < ApplicationController
       exit_date: from_excel_serial_date(row['exit_date']),
       acquirers: row['acquirers'],
       latest_valuation: row['latest_valuation'].to_d,
-      city: row['city']
+      city: row['city'],
+      comment1: row['comment1'],
+      comment2: row['comment2'],
+      comment3: row['comment3'],
+      comment4: row['comment4']
     }
   end
 end

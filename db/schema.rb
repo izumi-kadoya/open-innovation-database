@@ -10,15 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_023409) do
-  create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.integer "record_id"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_075224) do
   create_table "records", charset: "utf8", force: :cascade do |t|
+    t.string "csv"
     t.string "company_industry"
     t.string "company_name"
     t.date "article_date"
@@ -39,6 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_023409) do
     t.text "acquirers"
     t.decimal "latest_valuation", precision: 10
     t.string "city"
+    t.string "comment1"
+    t.string "comment2"
+    t.string "comment3"
+    t.text "comment4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
