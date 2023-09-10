@@ -14,6 +14,7 @@ header.header {
   font-weight: bold;
   text-decoration: none;
   margin-left: 15px;
+  color: #333;
 }
 
 header.header div.header__bar.row {
@@ -111,42 +112,52 @@ h6{
 }
 
 .industry-list,.company-list{
-  margin: 40px,80px;
-  padding: 16px;
-  background-color: #FFFFFF;
-  height: 460px;
-  width: 300px;
+  margin: 30px,70px;
+  width: 390px;
   line-height: 29px;
-  overflow-y: scroll;
 }
 .industry-list-upper,.company-list-upper{
+  height: 40px;
   color: #333;
+  font-size: 23px;
   font-weight: 700;
-  border-bottom: 3px solid #dcf5ead8;
+  background-color: #F3f3f3;
   text-align: center; 
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+.industry-list-body,.company-list-body{
+  background-color: #FFFFFF;
+  height: 380px;
+  padding: 20px;
+  overflow-y: scroll;
 }
 .industry-list a{
-  text-decoration: none;
+ text-decoration: none;
   color: #555;
+  font-size: 23px;
 }
+.industry-list ul{
+list-style-type: disc;
+} 
 .industry-list a:hover {
-  color: blue; 
+  color: darkblue; 
 }
 
 .company-list ul li a:hover {
-  color: blue; 
+  color: darkblue; 
 }
 
 .company-list-upper a{
   margin: 0 10px; 
   text-decoration: none;
   display: inline-block;
+  font-size: 20px;
 }
 
 .company-list ul li a {
   text-decoration: none;
   color: #555;
+  font-size: 22px;
 }
 /* indexのコメント欄 */
 .new_comments{
@@ -177,6 +188,7 @@ h6{
 .previous-next a{
  text-decoration: none;
  font-size: 20px;
+ color:darkcyan;
 }
 .bp-detail-body{
   margin: 20px,40px;
@@ -188,6 +200,7 @@ h6{
 .bp-detail-left h1{
   font-size: 44px;
   font-weight: 700;
+  line-height: 50px;
 }
 .bp-detail-left p{
   font-size: 25px;
@@ -217,25 +230,26 @@ h6{
 }
 .description-content{
   background-color: #FFFFFF;
+  width: calc(100% - 20px);
   padding: 10px;
 }
 /* コメント */
 .comment-box{
   width: 100%;
   margin-top: 25px;
-  background-color: #FFFFFF;
-  height: 150px;
+  background-color: #f3f3f3;
+  height: 170px;
 }
 
 .comment123{
   display: flex;
   height: 30px;
-  justify-content:space-evenly;
+  justify-content: lrft;
   margin-bottom: 10px; 
 }
 .comment1,.comment2,.comment3{
-  border: 1px solid #bcbaba; 
-  border-radius: 5px;
+  margin-right: 28px;
+  background-color: #FFFFFF;
   width: 140px;
   height: 35px;
   margin: 5px;
@@ -245,23 +259,25 @@ h6{
 .comment2 textarea,
 .comment3 textarea {
     width: 100%; 
-    height: 31px;
-    border:  1px solid #f09815; 
+    height: 29px;
+    border-color: transparent;
     background-color: transparent; 
     font-size: 14px; 
     padding: 0; 
 }
 .comment4{
-  border: 1px solid #bcbaba; 
+  margin-top: 20px;
+  margin-left: 5px;
+  background-color: #FFFFFF;
   height:100px;
-  border-radius: 5px; 
+  width: calc(100% - 20px);
   padding: 10px; 
 }
 .comment4 textarea {
   width: 100%;
-  height: calc(100% - 10px); 
-  border:  1px solid #f09815; 
-  background-color: transparent;
+  height: calc(100% - 5px); 
+  border-color: transparent;
+  background-color: transparent; 
   font-size: 14px;
   padding: 0;
 }
@@ -274,6 +290,7 @@ h6{
   cursor: pointer;
   transition: background-color 0.2s;
   margin-top: 5px; 
+  margin-left: 20px;
 }
 
 .btn-edit:hover {
@@ -289,6 +306,7 @@ h6{
   cursor: pointer;
   transition: background-color 0.2s;
   margin-top: 5px; 
+  margin-left: 20px;
 }
 
 .btn-primary:hover {

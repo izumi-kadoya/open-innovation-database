@@ -5,11 +5,13 @@
    <div class="industry-list-upper">
      industries
    </div>
+   <div class="industry-list-body">
   <ul>
     <% ["Life and Health Insurance", "Non-life Insurance", "Financial Services", "Logistics", "Pharmaceuticals", "Retail"].each do |industry| %>
       <li><%= link_to industry, filter_by_industry_records_path(industry: industry) %></li>
     <% end %>
   </ul>
+  </div>
   </div>
 
 
@@ -19,12 +21,13 @@
      <%= link_to "name 🔼", records_path(order_by: 'company_name')  %>
      <%= link_to "upload date 🔽", records_path(order_by: 'created_at')  %>
     </div>
-
+   <div class="company-list-body">
     <ul>
      <% @companies.each do |company_name, id| %>
      <li><%= link_to company_name, record_path(id) %></li>
      <% end %>
     </ul>
+    </div>
   <div>
 
 </div>

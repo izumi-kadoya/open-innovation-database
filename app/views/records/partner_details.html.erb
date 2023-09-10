@@ -1,10 +1,10 @@
 <h6><%=@record.company_industry%>＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h6>
 <div class="previous-next">
    <% if @previous_record %>
-     <%= link_to "　◀️　", partner_details_record_path(@previous_record), data: { turbo: false } %>
+     <%= link_to "　◀︎　", partner_details_record_path(@previous_record), data: { turbo: false } %>
    <% end %>
    <% if @next_record %>
-     <%= link_to "　▶️　", partner_details_record_path(@next_record), data: { turbo: false } %>
+     <%= link_to "　▶︎　", partner_details_record_path(@next_record), data: { turbo: false } %>
    <% end %>
 </div>
 
