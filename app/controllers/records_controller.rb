@@ -1,11 +1,20 @@
 require 'csv'
 
 class RecordsController < ApplicationController
+
   before_action :set_record, only: [:show, :edit,:partner_details]
   def index
-    @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
+    order_key = case params[:order_by]
+                when 'company_name'
+                  'company_name ASC'
+                when 'created_at'
+                  'MIN(created_at) DESC'
+                else
+                  'company_name'  # デフォルトのソート順
+                end
+    @companies = Record.select('company_name, MIN(id) as id, MIN(created_at) as created_at').group(:company_name).order(order_key).map { |r| [r.company_name, r.id] }
   end
-
+  
   def show
     @related_records = Record.where(company_name: @record.company_name)
   end
@@ -52,6 +61,18 @@ class RecordsController < ApplicationController
 
   def partner_details
     @related_records = Record.where(company_name: @record.company_name)
+  
+    # 同じ company_name を持ち、現在のレコードより id が小さい最大のレコードを取得
+    @previous_record = Record.where("company_name = ? AND id < ?", @record.company_name, @record.id).order(id: :desc).first
+    
+    # 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
+    @next_record = Record.where("company_name = ? AND id > ?", @record.company_name, @record.id).order(id: :asc).first
+  end
+
+  def filter_by_industry
+    order_key = 'company_name'  # 業種で絞り込む際のデフォルトのソート順
+    @companies = Record.select('company_name, MIN(id) as id').where(company_industry: params[:industry]).group(:company_name).order(order_key).map { |r| [r.company_name, r.id] }
+    render :index
   end
 
   private
