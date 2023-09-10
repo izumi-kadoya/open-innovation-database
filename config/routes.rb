@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+  resources :users, only: [:index, :update, :destroy]
   resources :records do
-    
     member do
       get 'partner_details'
     end

@@ -1,7 +1,7 @@
 require 'csv'
 
 class RecordsController < ApplicationController
-
+  load_and_authorize_resource
   before_action :set_record, only: [:show, :edit,:partner_details]
   def index
     order_key = case params[:order_by]
