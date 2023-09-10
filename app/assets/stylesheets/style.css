@@ -93,7 +93,7 @@ body {
   line-height: 1.6;
   letter-spacing: 0.03em;
   font-size: 16px;
-  color: #666;
+  color: #555;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -103,24 +103,41 @@ body {
   justify-content: space-around;
 }
 
-.industry-list, .company-list {
+.industry-list,.company-list{
   padding: 10px;
   background-color: #FFFFFF;
   height: 460px;
   width: 300px;
 }
-.company-list-upper {
- border-bottom: 1px solid #dcf5ead8;
+.industry-list-upper,.company-list-upper{
+  color: #333;
+  font-weight: 700;
+  border-bottom: 1px solid #dcf5ead8;
   text-align: center; 
   margin-bottom: 2px;
 }
-
-.no-underline {
-  margin: 0 10px; 
+.industry-list a{
   text-decoration: none;
-  display: inline-block; 
+  color: #555;
+}
+.industry-list a:hover {
+  color: blue; 
 }
 
+.company-list ul li a:hover {
+  color: blue; 
+}
+
+.company-list-upper a{
+  margin: 0 10px; 
+  text-decoration: none;
+  display: inline-block;
+}
+
+.company-list ul li a {
+  text-decoration: none;
+  color: #555;
+}
 /* indexのコメント欄 */
 .new_comments{
   padding: 10px;

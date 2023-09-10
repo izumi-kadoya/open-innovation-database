@@ -63,6 +63,12 @@ class RecordsController < ApplicationController
     @related_records = Record.where(company_name: @record.company_name)
   end
 
+  def filter_by_industry
+    order_key = 'company_name'  # 業種で絞り込む際のデフォルトのソート順
+    @companies = Record.select('company_name, MIN(id) as id').where(company_industry: params[:industry]).group(:company_name).order(order_key).map { |r| [r.company_name, r.id] }
+    render :index
+  end
+
   private
 
   def set_record
