@@ -2,7 +2,7 @@
 header.header {
   padding: 7px;
   border-bottom: 1px solid #D8D8D8;
-  background-color: #f0af8c;
+  background-color:#A8E6CF;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,17 +10,18 @@ header.header {
   z-index: 5;
   height: 50px;
 }
-.grid-6{
+.grid-6 a{
   font-weight: bold;
+  text-decoration: none;
+  margin-left: 15px;
 }
-
 
 header.header div.header__bar.row {
   position: relative;
 }
 
 header.header div.header__bar.row h1.grid-6 {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 41px;
   float: left;
 }
@@ -88,7 +89,6 @@ h2,
 h3,
 h4,
 h5,
-h6,
 body {
   line-height: 1.6;
   letter-spacing: 0.03em;
@@ -96,25 +96,35 @@ body {
   color: #555;
   font-family: 'Poppins', sans-serif;
 }
+h6{
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+}
 
 /* index */
 .index-body{
   display: flex;
-  justify-content: space-around;
+  justify-content:space-evenly;
 }
 
 .industry-list,.company-list{
-  padding: 10px;
+  margin: 40px,80px;
+  padding: 16px;
   background-color: #FFFFFF;
   height: 460px;
   width: 300px;
+  line-height: 29px;
+  overflow-y: scroll;
 }
 .industry-list-upper,.company-list-upper{
   color: #333;
   font-weight: 700;
-  border-bottom: 1px solid #dcf5ead8;
+  border-bottom: 3px solid #dcf5ead8;
   text-align: center; 
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 .industry-list a{
   text-decoration: none;
@@ -150,6 +160,7 @@ body {
 .business-partner-index{
   display: flex;
   float: left;
+  flex-wrap: wrap;  
   width:100%;
 }
 
