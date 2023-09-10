@@ -21,11 +21,17 @@ industries
 
 
   <div class="company-list">
+  <div class="company-list-upper">
+  <%= link_to "name 🔼", records_path(order_by: 'company_name') ,class: "no-underline" %>
+<%= link_to "upload date 🔽", records_path(order_by: 'created_at') ,class: "no-underline" %>
+   </div>
+   <div>
    <ul>
     <% @companies.each do |company_name, id| %>
     <li><%= link_to company_name, record_path(id) %></li>
     <% end %>
    </ul>
+   </div>
   </div>
 
   <div class="new_comments">

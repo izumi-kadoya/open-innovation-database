@@ -1,11 +1,20 @@
 require 'csv'
 
 class RecordsController < ApplicationController
+
   before_action :set_record, only: [:show, :edit,:partner_details]
   def index
-    @companies = Record.select('company_name, MIN(id) as id').group(:company_name).map { |r| [r.company_name, r.id] }
+    order_key = case params[:order_by]
+                when 'company_name'
+                  'company_name ASC'
+                when 'created_at'
+                  'MIN(created_at) DESC'
+                else
+                  'company_name'  # デフォルトのソート順
+                end
+    @companies = Record.select('company_name, MIN(id) as id, MIN(created_at) as created_at').group(:company_name).order(order_key).map { |r| [r.company_name, r.id] }
   end
-
+  
   def show
     @related_records = Record.where(company_name: @record.company_name)
   end
