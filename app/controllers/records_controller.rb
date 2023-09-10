@@ -61,6 +61,12 @@ class RecordsController < ApplicationController
 
   def partner_details
     @related_records = Record.where(company_name: @record.company_name)
+  
+    # 同じ company_name を持ち、現在のレコードより id が小さい最大のレコードを取得
+    @previous_record = Record.where("company_name = ? AND id < ?", @record.company_name, @record.id).order(id: :desc).first
+    
+    # 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
+    @next_record = Record.where("company_name = ? AND id > ?", @record.company_name, @record.id).order(id: :asc).first
   end
 
   def filter_by_industry

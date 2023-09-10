@@ -1,5 +1,10 @@
 <h6><%=@record.company_industry%>＞<%= link_to @record.company_name,record_path(@record)%>＞<%=@record.business_partner%></h6>
+<div class="previous-next">
+   <%= link_to "　◀️　", partner_details_record_path(@previous_record) if @previous_record %>
+   <%= link_to "　▶️　", partner_details_record_path(@next_record) if @next_record %>
+</div>
 <div class="bp-detail-body">
+
   <div class="bp-detail-left">
 
 <ul>
