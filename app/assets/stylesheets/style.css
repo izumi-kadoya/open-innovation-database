@@ -11,10 +11,11 @@ header.header {
   height: 50px;
 }
 .grid-6 a{
-  font-weight: bold;
+  font-weight:900;
   text-decoration: none;
   margin-left: 15px;
   color: #333;
+  font-family: 'Raleway', sans-serif;
 }
 
 header.header div.header__bar.row {
