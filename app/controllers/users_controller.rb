@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: [:update, :destroy]
 
   def index
@@ -28,6 +29,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:approved, :admin) # この部分は更新したい属性に応じて調整してください。
+    params.require(:user).permit(:approved, :admin)
   end
 end

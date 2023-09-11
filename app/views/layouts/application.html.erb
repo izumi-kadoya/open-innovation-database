@@ -21,7 +21,9 @@
           <div class="user_nav grid-6">
             <ul class="user__info">
               <li>
-              <%# <%= link_to ##%>
+              <%if current_user.admin?%>
+              <%= link_to "Admin", users_path , class: "btn-user" %>
+              <%end%>
                 <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn-user signup"  %>
               </li>
             </ul>
