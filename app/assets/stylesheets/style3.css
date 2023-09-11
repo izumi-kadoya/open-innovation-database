@@ -1,0 +1,108 @@
+.signup-container h2,.login-container h2{
+  font-size: 25px;
+}
+/* 新規登録コンテナ全体のスタイル設定 */
+.signup-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: transparent;
+}
+
+/* 新規登録フォームのスタイル設定 */
+.signup-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+.signup-form .field{
+  margin-bottom: 10px;
+}
+.signup-form .field label {
+  display: block;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.signup-form .field em {
+  font-size: 90%;
+  color: #666;
+  margin-left: 5px;
+}
+.signup-form .actions {
+  text-align: center;
+}
+
+.signup-form .actions input[type="submit"] {
+  background-color: plum;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form .actions input[type="submit"]:hover {
+  background-color: palevioletred;
+}
+
+/* ログイン */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: transparent;
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.login-form .field {
+  margin-bottom: 20px;
+}
+
+.login-form .field label {
+  display: block;
+  font-weight: bold;
+}
+
+.login-form .field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-form .actions {
+  text-align: center;
+}
+
+.login-form .actions input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-form .actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
