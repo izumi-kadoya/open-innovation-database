@@ -61,20 +61,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  Capybara.register_driver :selenium do |app|
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome(
-      "chromeOptions" => {
-        "args" => [ "--disable-web-security", "--user-data-dir=/tmp" ]
-      }
-    )
-  
-    Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      desired_capabilities: caps
-    )
-  end
-  ENV["BASIC_AUTH_USER"] = 'your_username'
-  ENV["BASIC_AUTH_PASSWORD"] = 'your_password'
-  
 end
