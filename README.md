@@ -54,6 +54,7 @@ open-innovation-database
 # 洗い出した要件、画面遷移図
 ・要件　https://docs.google.com/spreadsheets/d/1oaTIrUe-QuXtiXcp63cuuNNZqhajICt6igWrkO41zu8/edit?usp=sharing  
 ・画面遷移図
+<img width="1086" alt="画面遷移図" src="https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/ed2d7cf4-1138-46d4-a991-f5030388d606">
 
 
 # データベース設計
