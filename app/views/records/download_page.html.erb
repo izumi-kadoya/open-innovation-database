@@ -1,0 +1,9 @@
+<h1>Download Records CSV</h1><br>
+
+<%= form_with(url: download_records_path(format: 'csv'), method: :get, local: true) do %>
+  <div class="form-group">
+    <%= label_tag :company_industry, "Select Company Industry" %>
+    <%= select_tag :company_industry, options_from_collection_for_select(Record.select(:company_industry).distinct, :company_industry, :company_industry) %>
+  </div>
+  <%= submit_tag 'Download CSV', class: 'btn btn-primary' %>
+<% end %>

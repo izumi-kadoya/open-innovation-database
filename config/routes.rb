@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
     collection do
       get 'filter_by_industry'
+      get 'download'
+      get 'download_page'  
     end
   end
   
