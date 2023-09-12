@@ -75,6 +75,22 @@ class RecordsController < ApplicationController
     render :index
   end
 
+  def download
+    if params[:company_industry].present?
+      @records = Record.where(company_industry: params[:company_industry])
+    else
+      @records = Record.all
+    end
+  
+    respond_to do |format|
+      format.html
+      format.csv { send_data to_csv(@records), filename: "#{params[:company_industry]}-records-#{Date.today}.csv" }
+    end
+  end
+  
+  def download_page
+  end
+
   private
 
   def set_record
@@ -145,4 +161,64 @@ class RecordsController < ApplicationController
       comment4: row['comment4']
     }
   end
+  def to_csv(records)
+    CSV.generate(headers: true) do |csv|
+      csv << [
+        "company_industry",
+        "company_name",
+        "article_date",
+        "business_partner",
+        "country",
+        "url",
+        "description",
+        "business_description",
+        "article_summary",
+        "sub_industry",
+        "founded_year",
+        "latest_funding_round",
+        "latest_funding_date",
+        "latest_funding_investors",
+        "total_funding",
+        "all_investors",
+        "exit_date",
+        "acquirers",
+        "latest_valuation",
+        "city",
+        "comment1",
+        "comment2",
+        "comment3",
+        "comment4"
+      ]
+  
+      records.each do |record|
+        csv << [
+          record.company_industry,
+          record.company_name,
+          record.article_date,
+          record.business_partner,
+          record.country,
+          record.url,
+          record.description,
+          record.business_description,
+          record.article_summary,
+          record.sub_industry,
+          record.founded_year,
+          record.latest_funding_round,
+          record.latest_funding_date,
+          record.latest_funding_investors,
+          record.total_funding,
+          record.all_investors,
+          record.exit_date,
+          record.acquirers,
+          record.latest_valuation,
+          record.city,
+          record.comment1,
+          record.comment2,
+          record.comment3,
+          record.comment4
+        ]
+      end
+    end
+  end
+  
 end
