@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'UserSignUp', type: :system do
   before do
-      username = ENV["BASIC_AUTH_USER"]
-      password = ENV["BASIC_AUTH_PASSWORD"]
-      visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
+    basic_auth_pass_through
     @user = FactoryBot.build(:user)
   end
   context 'ユーザー新規登録ができるとき' do 
@@ -62,6 +60,7 @@ end
 
 RSpec.describe 'Log in', type: :system do
   before do
+    basic_auth_pass_through
     @user = FactoryBot.create(:user)
   end
   context 'ログインができるとき' do
@@ -104,5 +103,18 @@ RSpec.describe 'Log in', type: :system do
       # ログインページへ戻されることを確認する
       expect(page).to have_current_path(new_user_session_path)
     end
+  end
+
+
+end
+
+private
+def basic_auth_pass_through
+  username = ENV["BASIC_AUTH_USER"]
+  password = ENV["BASIC_AUTH_PASSWORD"]
+  if page.driver.browser.respond_to?(:authorize)
+    page.driver.browser.authorize(username, password)
+  else
+    visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{current_path}"
   end
 end
