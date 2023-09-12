@@ -26,48 +26,28 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new
     uploaded_io = params[:record][:csv]
-  
-    if uploaded_io.nil?
-      @record.errors.add(:csv, "No file uploaded")
-      render :new
-      return
-    end
-  
-    unless valid_csv?(uploaded_io)
-      @record.errors.add(:csv, "Uploaded file is not a valid CSV.")
-      render :new
-      return
-    end
-  
-    headers = CSV.read(uploaded_io.path, headers: true).headers
     
-    # 必要なカラムのリスト
-    required_columns = %w[company_industry company_name article_date business_partner ...] # (省略) すべてのカラム名をここに列挙してください
-  
-    missing_columns = required_columns - headers
-    if missing_columns.any?
-      @record.errors.add(:csv, "CSV is missing required columns: #{missing_columns.join(', ')}")
-      render :new
-      return
-    end
-  
-    failed_records = []
-    CSV.foreach(uploaded_io.path, headers: true) do |row|
-      record = Record.new(map_row_to_record(row))
-      unless record.save
-        failed_records << record.errors.full_messages.join(", ")
+    if uploaded_io
+      failed_records = []  # 保存に失敗した行のエラーメッセージを保存するための配列
+      CSV.foreach(uploaded_io.path, headers: true) do |row|
+        record = Record.new(map_row_to_record(row))
+        unless record.save  # 保存が失敗した場合、エラーメッセージを配列に追加
+          failed_records << record.errors.full_messages.join(", ")
+        end
       end
-    end
   
-    if failed_records.empty?
-      redirect_to records_path, notice: 'CSV was successfully uploaded.'
+      if failed_records.empty?
+        redirect_to records_path, notice: 'CSV was successfully uploaded.'
+      else
+        # 保存に失敗したレコードのエラーメッセージを表示
+        flash.now[:alert] = "Failed to save some records: #{failed_records.join('. ')}"
+        render :new
+      end
     else
-      @record.errors.add(:csv, "Failed to save some records: #{failed_records.join('. ')}")
+      flash.now[:alert] = "No file uploaded"
       render :new
     end
   end
-  
-  
   
 
   def edit
@@ -164,10 +144,5 @@ class RecordsController < ApplicationController
       comment3: row['comment3'],
       comment4: row['comment4']
     }
-  end
-  def valid_csv?(uploaded_io)
-    # アップロードされたファイルがCSVかどうかを確認
-    mime_type = `file --brief --mime-type #{uploaded_io.path}`.chomp
-    mime_type == "text/csv"
   end
 end
