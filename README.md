@@ -53,11 +53,11 @@ open-innovation-database
 　・そこで、本アプリケーションで必要な情報を見やすく配置し、また、 コメントを記入し共有できるようにいたしました。
 # 洗い出した要件、画面遷移図
 ・要件　https://docs.google.com/spreadsheets/d/1oaTIrUe-QuXtiXcp63cuuNNZqhajICt6igWrkO41zu8/edit?usp=sharing  
-・画面遷移図
 <img width="1086" alt="画面遷移図" src="https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/ed2d7cf4-1138-46d4-a991-f5030388d606">
 
 
 # データベース設計
+![ ER ](https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/6828b4c0-3894-4ca7-bfac-df1fa6ee382e)
 
 # 実装予定の機能
 ・API連携し、RPA稼働時にGoogle Bardからうまく取得できなかった情報について、再取得して上書き保存する機能
