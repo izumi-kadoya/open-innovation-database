@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'UserSignUp', type: :system do
   before do
+      username = ENV["BASIC_AUTH_USER"]
+      password = ENV["BASIC_AUTH_PASSWORD"]
+      visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
     @user = FactoryBot.build(:user)
   end
   context 'ユーザー新規登録ができるとき' do 
