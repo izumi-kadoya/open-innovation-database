@@ -52,11 +52,13 @@ open-innovation-database
 　・Windows Power Automate Desktop上で作成したエクセルデータは非常に見づらく、また、社内で共有しにくいという課題がありました。  
 　・そこで、本アプリケーションで必要な情報を見やすく配置し、また、 コメントを記入し共有できるようにいたしました。
 # 洗い出した要件、画面遷移図
+・要件　https://docs.google.com/spreadsheets/d/1oaTIrUe-QuXtiXcp63cuuNNZqhajICt6igWrkO41zu8/edit?usp=sharing  
+・画面遷移図
 
 # データベース設計
 
 # 実装予定の機能
-
+・API連携し、Googlebard
 # 開発環境
 
 #
