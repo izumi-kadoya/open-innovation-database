@@ -63,7 +63,12 @@ open-innovation-database
 ・API連携し、RPA稼働時にGoogle Bardからうまく取得できなかった情報について、再取得して上書き保存する機能
 
 # ローカルでの作動方法
-　・新規登録したユーザーは管理者ユーザーでも一般ユーザーでもありません。まずは権限を付与する必要があります。  
+　・ターミナルにて以下を実行してください  
+　　% git clone https://github.com/izumi-kadoya/open-innovation-database.git  
+　　% cd open-innovation-database  
+　　% bundle install  
+　・アプリケーションを開き、「Sign up」ボタンから新規登録を行なってください。  
+　　新規登録したユーザーは管理者ユーザーでも一般ユーザーでもありません。まずは権限を付与する必要があります。  
 　・テーブルを直接開き、登録したユーザーの「admin」と「approved」をそれぞれ「１」に変更してください。
 
 # RPAで行うこと
