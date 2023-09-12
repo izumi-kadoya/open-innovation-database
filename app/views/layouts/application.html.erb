@@ -21,6 +21,12 @@
           <div class="user_nav grid-6">
             <ul class="user__info">
               <li>
+              <% if current_user.approved? || current_user.admin? %>
+             <%= link_to "csv Download",download_page_records_path , class: "btn-dl" %> 
+              <%end %>
+
+
+
               <%if current_user.admin?%>
               <%= link_to "Admin", users_path , class: "btn-user" %>
               <%end%>
