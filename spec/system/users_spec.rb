@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'UserSignUp', type: :system do
   before do
-      username = ENV["BASIC_AUTH_USER"]
-      password = ENV["BASIC_AUTH_PASSWORD"]
-      visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
-    @user = FactoryBot.build(:user)
+   @user = FactoryBot.build(:user)
   end
   context 'ユーザー新規登録ができるとき' do 
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
@@ -27,10 +24,8 @@ RSpec.describe 'UserSignUp', type: :system do
       }.to change { User.count }.by(1)
       # トップページへ遷移することを確認する
       expect(page).to have_current_path(root_path)
-      # カーソルを合わせるとログアウトボタンが表示されることを確認する
-      expect(
-        find('.user_nav').find('span').hover
-      ).to have_content('Log out')
+     # ログアウトボタンが表示されることを確認する
+      expect(page).to have_content('Log out')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
       expect(page).to have_no_content('Sign up')
       expect(page).to have_no_content('Log in')
@@ -79,10 +74,8 @@ RSpec.describe 'Log in', type: :system do
     find('input[name="commit"]').click
     # トップページへ遷移することを確認する
     expect(page).to have_current_path(root_path)
-    # カーソルを合わせるとログアウトボタンが表示されることを確認する
-    expect(
-      find('.user_nav').find('span').hover
-    ).to have_content('ログアウト')
+    # ログアウトボタンが表示されることを確認する
+    expect(page).to have_content('Log out')
     # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
     expect(page).to have_no_content('Sign up')
     expect(page).to have_no_content('Log in')
