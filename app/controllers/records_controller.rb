@@ -76,6 +76,7 @@ class RecordsController < ApplicationController
   end
 
   def download
+    authorize! :download, Record
     if params[:company_industry].present?
       @records = Record.where(company_industry: params[:company_industry])
     else
