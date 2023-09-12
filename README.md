@@ -55,10 +55,11 @@ open-innovation-database
 ・要件　https://docs.google.com/spreadsheets/d/1oaTIrUe-QuXtiXcp63cuuNNZqhajICt6igWrkO41zu8/edit?usp=sharing  
 ・画面遷移図
 
+
 # データベース設計
 
 # 実装予定の機能
-・API連携し、Googlebard
+・API連携し、RPA稼働時にGooglebardからうまく取得できなかった情報について、再取得して上書き保存する機能
 # 開発環境
 
 #
@@ -67,6 +68,12 @@ open-innovation-database
 　・テーブルを直接開き、登録したユーザーの「admin」と「approved」をそれぞれ「１」に変更してください。
 
 # RPAで行うこと
+　・まず、調べたい企業のCB InsightsのURLをエクセルシートに記述します。複数ある場合は複数記入します。  
+　・RPAを起動させます。以下は自動で行われます。  
+　（１）自動で、企業ごとに日付などの条件を絞り込み、以下の２種類の情報をエクセルでダウンロードします。  
+　　①企業が投資した記事の情報  
+　　②投資した先のスタートアップの企業情報  
+　（２）
 
 # 工夫したポイント
 　・ビュー画面では、あえてはじめに表示される情報を少なくすることで、すっきりとした見た目を実現しました。  
