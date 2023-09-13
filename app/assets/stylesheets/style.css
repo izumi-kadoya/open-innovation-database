@@ -110,3 +110,9 @@ h6{
   font-family: 'Poppins', sans-serif;
 }
 
+.alert{
+  color: orangered;
+}
+.notice{
+  color: green;
+}

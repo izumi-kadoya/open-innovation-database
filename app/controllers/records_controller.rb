@@ -3,7 +3,9 @@ require 'csv'
 class RecordsController < ApplicationController
   load_and_authorize_resource
   before_action :set_record, only: [:show, :edit,:partner_details]
+
   def index
+    # 並び順
     order_key = case params[:order_by]
                 when 'company_name'
                   'company_name ASC'
@@ -28,6 +30,10 @@ class RecordsController < ApplicationController
     uploaded_io = params[:record][:csv]
     
     if uploaded_io
+      unless valid_csv_file?(uploaded_io)
+        flash.now[:alert] = "Uploaded file is not a valid CSV."
+        render :new and return
+      end
       failed_records = []  # 保存に失敗した行のエラーメッセージを保存するための配列
       CSV.foreach(uploaded_io.path, headers: true) do |row|
         record = Record.new(map_row_to_record(row))
@@ -48,6 +54,8 @@ class RecordsController < ApplicationController
       render :new
     end
   end
+
+ 
   
 
   def edit
@@ -62,10 +70,10 @@ class RecordsController < ApplicationController
   def partner_details
     @related_records = Record.where(company_name: @record.company_name)
   
-    # 同じ company_name を持ち、現在のレコードより id が小さい最大のレコードを取得
+    # ◀︎ 同じ company_name を持ち、現在のレコードより id が小さい最大のレコードを取得
     @previous_record = Record.where("company_name = ? AND id < ?", @record.company_name, @record.id).order(id: :desc).first
     
-    # 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
+    # ▶︎ 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
     @next_record = Record.where("company_name = ? AND id > ?", @record.company_name, @record.id).order(id: :asc).first
   end
 
@@ -92,6 +100,8 @@ class RecordsController < ApplicationController
   def download_page
   end
 
+
+  # ここからprivate
   private
 
   def set_record
@@ -127,7 +137,8 @@ class RecordsController < ApplicationController
       :comment4
     )
   end
-  
+
+  # 日付のシリアル値をdate型に変更
   def from_excel_serial_date(serial_date)
     base_date = Date.new(1899, 12, 31)  
     adjusted_serial_date = serial_date.to_i
@@ -162,6 +173,12 @@ class RecordsController < ApplicationController
       comment4: row['comment4']
     }
   end
+
+  def valid_csv_file?(uploaded_io)
+    File.extname(uploaded_io.original_filename).downcase == ".csv"
+  end
+
+  # ダウンロード
   def to_csv(records)
     CSV.generate(headers: true) do |csv|
       csv << [
