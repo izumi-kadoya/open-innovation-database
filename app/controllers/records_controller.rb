@@ -55,9 +55,6 @@ class RecordsController < ApplicationController
     end
   end
 
- 
-  
-
   def edit
   end
 
