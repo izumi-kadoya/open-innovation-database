@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get 'download'
       get 'download_page'  
     end
-    post 'fetch_info', to: 'records#fetch_info'
+  post 'fetch_info', on: :member, to: 'records#fetch_info'
   end
   
   root 'records#index'

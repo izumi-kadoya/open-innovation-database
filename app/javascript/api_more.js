@@ -1,22 +1,31 @@
-$(document).on('turbolinks:load', function() { // Turbolinksとの互換性を確保するためにこれを使用します
-  $('#fetch-info-button').on('click', function() {
-      var recordUrl = $(this).data('record-url'); // ボタンのデータ属性からURLを取得
+document.addEventListener('DOMContentLoaded', function() {
+  const fetchInfoButton = document.getElementById('fetch-info-button');
 
-      $.ajax({
-          url: '/records/fetch_info',
-          method: 'POST',
-          data: { url: recordUrl },
-          dataType: 'json',
-          success: function(response) {
-              if (response && response.message) {
-                  $('.more-description').html(response.message.content);
+  if (fetchInfoButton) {
+      fetchInfoButton.addEventListener('click', function() {
+          const recordUrl = fetchInfoButton.getAttribute('data-url');
+
+          fetch('/records/fetch_info', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+              },
+              body: JSON.stringify({ url: recordUrl }),
+          })
+          .then(response => response.json())
+          .then(data => {
+              const moreDescription = document.querySelector('.more-description');
+              if (data && data.message) {
+                  moreDescription.innerHTML = data.message.content;
               } else {
-                  $('.more-description').html('Failed to fetch information.');
+                  moreDescription.innerHTML = 'Failed to fetch information.';
               }
-          },
-          error: function() {
-              $('.more-description').html('Error occurred while fetching information.');
-          }
+          })
+          .catch(() => {
+              const moreDescription = document.querySelector('.more-description');
+              moreDescription.innerHTML = 'Error occurred while fetching information.';
+          });
       });
-  });
+  }
 });

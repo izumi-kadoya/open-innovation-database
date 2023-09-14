@@ -2,7 +2,7 @@ require 'csv'
 
 class RecordsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_record, only: [:show, :edit,:partner_details]
+  before_action :set_record, only: [:show, :edit,:partner_details,:fetch_info]
 
   def index
     # 並び順
@@ -71,8 +71,7 @@ class RecordsController < ApplicationController
     @previous_record = Record.where("company_name = ? AND id < ?", @record.company_name, @record.id).order(id: :desc).first
     # ▶︎ 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
     @next_record = Record.where("company_name = ? AND id > ?", @record.company_name, @record.id).order(id: :asc).first
-    # API連携で取得したデータ
-    @python_output = get_partner_details_from_python_script(@record.id)
+  
   end
 
   def filter_by_industry
@@ -98,17 +97,21 @@ class RecordsController < ApplicationController
   def download_page
   end
 
-  def get_partner_details_from_python_script(partner_id)
-    script_path = Rails.root.join('python_scripts', 'my_script.py')
-    output = `python #{script_path} #{partner_id}`
-    return output
-  end
-  def fetch_info
-    url = params[:url]
-    description = `python_scripts/scpripts.py "#{url}"`
-    render json: { description: description }
-  end
 
+  def fetch_info
+    url = @record.url 
+    
+    # URLの検証や正規化（必要に応じて）
+  
+    description = `python python_scripts/scripts.py "#{url}"`
+    
+    if $?.success? # スクリプトが正常に実行されたかをチェック
+      render json: { description: description }
+    else
+      render json: { error: 'Failed to fetch description from the script.' }, status: :internal_server_error
+    end
+  end
+  
 
 
   # ここからprivate
