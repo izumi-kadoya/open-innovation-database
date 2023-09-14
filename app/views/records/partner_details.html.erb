@@ -41,6 +41,9 @@
 <h3 id="show-description" data-description="<%= @record.business_description %>">▶️ For more description</h3>
 <h3 id="show-summary" data-summary="<%= @record.article_summary %>">▶️ Article Summary</h3>
 
+<%= link_to @record.url,  url, target: "_blank" %><br><br>
+<button id="fetch-info-btn" data-url="<%= @record.url %>">Fetch New Info</button>
+<br><br>
  </div>
  
  <div class="bp-detail-right">
