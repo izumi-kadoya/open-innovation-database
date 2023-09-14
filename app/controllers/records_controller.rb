@@ -1,5 +1,6 @@
 require 'csv'
-
+require 'pycall/import'
+include PyCall::Import
 class RecordsController < ApplicationController
   load_and_authorize_resource
   before_action :set_record, only: [:show, :edit,:partner_details,:fetch_info]
@@ -101,11 +102,12 @@ class RecordsController < ApplicationController
   def fetch_info
     url = @record.url 
     
-    # URLの検証や正規化（必要に応じて）
-  
-    description = `python python_scripts/scripts.py "#{url}"`
+    # pycallでPythonの関数を呼び出す
+    PyCall.sys.path.append(File.expand_path('./python_scripts'))
+    pyimport 'scripts', as: 'integration_script'
+    description = integration_script.fetch_description(url)
     
-    if $?.success? # スクリプトが正常に実行されたかをチェック
+    if description  # 返された内容のチェック（エラーハンドリングは適宜調整してください）
       render json: { description: description }
     else
       render json: { error: 'Failed to fetch description from the script.' }, status: :internal_server_error

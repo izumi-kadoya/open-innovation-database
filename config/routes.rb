@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       get 'filter_by_industry'
       get 'download'
       get 'download_page'  
+      post 'fetch_info'
     end
-  post 'fetch_info', on: :member, to: 'records#fetch_info'
+
   end
   
   root 'records#index'
