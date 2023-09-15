@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // ボタンクリック時の処理
   document.querySelector("#article_summary_renew").addEventListener("click", function(event) {
-    console.log("API Key:", api_key);
-    const article_summary = event.target.dataset.article_summary; 
+    const article_summary = event.target.dataset.article_summary;
     const prompt = `Summarize the article that includes this line:${article_summary}`;
     access_openai(prompt);
   });

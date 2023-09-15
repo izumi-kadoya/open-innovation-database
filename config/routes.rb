@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :records do
     member do
       get 'partner_details'
+      post 'save_business_description'
+      post 'save_article_summary'
     end
     collection do
       get 'filter_by_industry'

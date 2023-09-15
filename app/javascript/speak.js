@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
     utterance.lang = 'en-US';
-    utterance.rate = 1;
+    utterance.rate = 0.9;
 
     utterance.onstart = function() {
         console.log("Speech synthesis started");
