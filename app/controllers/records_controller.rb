@@ -72,6 +72,7 @@ class RecordsController < ApplicationController
     
     # ▶︎ 同じ company_name を持ち、現在のレコードより id が大きい最小のレコードを取得
     @next_record = Record.where("company_name = ? AND id > ?", @record.company_name, @record.id).order(id: :asc).first
+    @api_key = ENV["OPENAI_API_SECRET_KEY"]
   end
 
   def filter_by_industry

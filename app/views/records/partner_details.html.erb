@@ -41,6 +41,9 @@
 <h3 id="show-description" data-description="<%= @record.business_description %>">▶️ For more description</h3>
 <h3 id="show-summary" data-summary="<%= @record.article_summary %>">▶️ Article Summary</h3>
 
+<button id="description_renew" data-url="<%= @record.url %>">description_renew</button>
+
+
  </div>
  
  <div class="bp-detail-right">
@@ -88,7 +91,13 @@
 
 </div>
 </div>
+
 <button id="read-aloud" class="btn btn-primary">Read Aloud</button>
 <button id="toggle-pause" class="btn btn-secondary">Pause/Resume</button>
-<div class="more-description">
+<div id="more-description" class="more-description">
 </div>
+
+
+<script>
+  var apiKey = "<%= @api_key %>";
+</script>
