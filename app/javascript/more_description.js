@@ -1,4 +1,4 @@
-// description renewをクリックするとCHATGPTからデータを再取得する
+//  renewをクリックするとCHATGPTからデータを再取得する
 document.addEventListener("DOMContentLoaded", function() {
   const api_key = window.apiKey; 
 

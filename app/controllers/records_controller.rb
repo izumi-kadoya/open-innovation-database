@@ -111,6 +111,16 @@ class RecordsController < ApplicationController
     end
   end
   
+  def save_article_summary
+    @record = Record.find(params[:id])
+    @record.article_summary = params[:article_summary]
+    
+    if @record.save
+      render json: { success: true }
+    else
+      render json: { success: false }, status: 422
+    end
+  end
 
 
     # CanCanCanの例外を捉える（ゲストユーザーがリダイレクトされた時）
