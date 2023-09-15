@@ -10,15 +10,12 @@ open-innovation-database
 https://open-innovation-database.onrender.com
 
 # テスト用アカウント
-・Basic認証ID  admin
-・Basic認証PW  5555
-・メールアドレス  test@test.com
-・パスワード  123456
-・アップロード用csv 
+・Basic認証ID  admin  
+・Basic認証PW  5555  
+・メールアドレス  test@test.com  
+・パスワード  123456  
+・アップロード用csv  
 [sample-data.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616004/sample-data.csv)
-  最下部にtextを記載
-
-
 　※但し、こちらのアプリケーションは実際に利用予定のため、ローカルのみでアップロードを行ってください。本番環境でのアップロードは行わないでください。  
  
 # 利用方法
@@ -36,8 +33,8 @@ https://open-innovation-database.onrender.com
 ### スタートアップの詳細を確認
 　・スタートアップの情報を確認できます。 URLリンクや、企業の概要などが示されています。 URLリンクや、企業の概要などが示されています。  
 　・大きな字で表示されているスタートアップ名にカーソルを合わせると、更なる詳細情報が表示されます。  
-　・▶️ For more description　をクリックすると、ページ下部にスタートアップの概要が表示されます。こちらはRPAを用いて、google　bardで作成した内容を記入していますので、bardが文章を作成できない際はその旨がそのまま表示されることがあります。  
-　・▶️ Article Summary　をクリックすると、ページ下部にスタートアップに投資した際の記事の要約が表示されます。こちらはRPAを用いて、google　bardで作成した内容を記入していますので、bardが文章を作成できない際はその旨がそのまま表示されることがあります。  
+　・▶️ For more description　をクリックすると、ページ下部にスタートアップの概要が表示されます。こちらはRPAを用いて、google　bardで作成した内容を記入していますので、bardが文章を作成できない際はその旨がそのまま表示されることがあります。読み上げたい時は「Read Aloud」ボタンをクリックしてください。  
+　・▶️ Article Summary　をクリックすると、ページ下部にスタートアップに投資した際の記事の要約が表示されます。こちらはRPAを用いて、google　bardで作成した内容を記入していますので、bardが文章を作成できない際はその旨がそのまま表示されることがあります。読み上げたい時は「Read Aloud」ボタンをクリックしてください。   
 ### コメント機能
 　・クライアントの要望に合わせ、短いコメント３つ、長いコメント１つの合計４つのコメント欄を設けています。短いコメント欄には、スタートアップのカテゴリ等を入力してください。長いコメントは、自由に記入できる欄として利用できます。これらは全ユーザーで共有のコメントとなります。  
 　・「edit」ボタンを押下すると、ページ読み込みなしで編集モードに切り替わります。  
@@ -66,7 +63,8 @@ https://open-innovation-database.onrender.com
 ![ ER ](https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/6828b4c0-3894-4ca7-bfac-df1fa6ee382e)
 
 # 実装予定の機能
-・API連携し、RPA稼働時にGoogle Bardからうまく取得できなかった情報について、再取得して上書き保存する機能
+・API連携し、RPA稼働時にGoogle Bardからうまく取得できなかった情報について、再取得して上書き保存する機能  
+・自然な音声での読み上げが可能なサービスへのAPI連携の切り替え
 
 # ローカルでの作動方法
 　・ターミナルにて以下を実行してください  
@@ -99,14 +97,6 @@ https://open-innovation-database.onrender.com
 # 工夫したポイント
 　・ビュー画面では、あえてはじめに表示される情報を少なくすることで、すっきりとした見た目を実現しました。  
 　・不必要な可能性のある情報についてはすぐに表示させないことで、「文字が多すぎて読むのが大変」・「見るだけでうんざりする」といった状況を回避しました。  
+　・さらに、長い文章が入ることが想定されてる箇所は読み上げ機能を活用することで、目が疲れた時などに文章を読まなくても良いように工夫しました。
 　・詳細情報や分量の多い情報を閲覧するときは、javascriptを用いてリロードなしで表示されており、ユーザーエクスペリエンスの向上を目指しました。  
 
-# テスト用csvデータ
-以下をテキストエディタなどのアプリケーションにコピーし、テスト用CSVを作成してください。
-company_industry,company_name,article_date,business_partner,company_type,country,news_snippet,url,description,business_description,article_summary,text,sector,industry,sub_industry,competitors,founded_year,latest_funding_round,latest_funding_date,latest_funding_amount,latest_funding_simplified_round,latest_funding_investors,total_funding,all_investors,link_date,link,expert_tag,date_added,added_by,date_last_edited,last_edited_by,company_status,exit_date,acquirers,latest_valuation,country,city,comment1,comment2,comment3,comment4
-Non-life Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
-Non-life Insurance,companyA,45106,partnerB,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
-Non-life Insurance,companyA,45106,partnerC,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
-Life and Health Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
-Life and Health Insurance,companyA,45106,partnerB,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
-Non-life Insurance,companyB,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
