@@ -98,6 +98,10 @@ class RecordsController < ApplicationController
   def download_page
   end
 
+    # CanCanCanの例外を捉える（ゲストユーザーがリダイレクトされた時）
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to root_path, alert: 'You do not have the necessary permissions. Please log in.'
+    end
 
   # ここからprivate
   private
