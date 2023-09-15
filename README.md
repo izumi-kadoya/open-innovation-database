@@ -1,4 +1,4 @@
-[sample.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616000/sample.csv)# アプリケーション名
+[sample-data.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616004/sample-data.csv)[sample.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616000/sample.csv)# アプリケーション名
 open-innovation-database
 
 # アプリケーション概要
@@ -14,8 +14,9 @@ https://open-innovation-database.onrender.com
 ・Basic認証PW  5555
 ・メールアドレス  test@test.com
 ・パスワード  123456
-・アップロード用csv  [company_industry,company_name,article_date,business_partner,company_type,country,news_snippet,url,description,business_description,article_summary,text,sector,industry,sub_industry,competitors,founded_year,latest_funding_round,latest_funding_date,latest_funding_amount,latest_funding_simplified_round,latest_funding_investors,total_funding,all_investors,link_date,link,expert_tag,date_added,added_by,date_last_edited,last_edited_by,company_status,exit_date,acquirers,latest_valuation,country,city,comment1,comment2,comment3,comment4
-Non-life Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4Uploading sample.csv…]()
+・アップロード用csv  
+  最下部にtextを記載
+
 
 　※但し、こちらのアプリケーションは実際に利用予定のため、ローカルのみでアップロードを行ってください。本番環境でのアップロードは行わないでください。  
  
@@ -97,4 +98,14 @@ Non-life Insurance,companyA,45106,partnerA,Vendor,United States,This is news_sni
 # 工夫したポイント
 　・ビュー画面では、あえてはじめに表示される情報を少なくすることで、すっきりとした見た目を実現しました。  
 　・不必要な可能性のある情報についてはすぐに表示させないことで、「文字が多すぎて読むのが大変」・「見るだけでうんざりする」といった状況を回避しました。  
-　・詳細情報や分量の多い情報を閲覧するときは、javascriptを用いてリロードなしで表示されており、ユーザーエクスペリエンスの向上を目指しました。
+　・詳細情報や分量の多い情報を閲覧するときは、javascriptを用いてリロードなしで表示されており、ユーザーエクスペリエンスの向上を目指しました。  
+
+# テスト用csvデータ
+以下をテキストエディタなどのアプリケーションにコピーし、テスト用CSVを作成してください。
+company_industry,company_name,article_date,business_partner,company_type,country,news_snippet,url,description,business_description,article_summary,text,sector,industry,sub_industry,competitors,founded_year,latest_funding_round,latest_funding_date,latest_funding_amount,latest_funding_simplified_round,latest_funding_investors,total_funding,all_investors,link_date,link,expert_tag,date_added,added_by,date_last_edited,last_edited_by,company_status,exit_date,acquirers,latest_valuation,country,city,comment1,comment2,comment3,comment4
+Non-life Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
+Non-life Insurance,companyA,45106,partnerB,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
+Non-life Insurance,companyA,45106,partnerC,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
+Life and Health Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
+Life and Health Insurance,companyA,45106,partnerB,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
+Non-life Insurance,companyB,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4
