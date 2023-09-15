@@ -1,11 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", function() {
   const api_key = window.apiKey; 
-  const record_url = '<%= @record.url %>'; // この行でインスタンス変数を取得
 
   // ボタンクリック時の処理
-  document.querySelector("#description_renew").addEventListener("click", function() {
-    const prompt = `describe this startup. ${record_url}`; // プロンプトを生成
+  document.querySelector("#description_renew").addEventListener("click", function(event) {
+    const record_url = event.target.dataset.url; 
+    const prompt = `Describe the business of this startup with the website link of ${record_url}? Please provide a straightforward description without using template-like formats.`;
     access_openai(prompt);
   });
 
@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
         "Authorization": "Bearer " + api_key 
       },
       body: JSON.stringify({
-        "model": "gpt-3.5-turbo",
+        "model": "text-davinci-003",
         "prompt":prompt,
-        "max_tokens": 200,
+        "max_tokens": 400,
       })
     })
     .then(response => response.json())
