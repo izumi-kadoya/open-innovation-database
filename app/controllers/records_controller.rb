@@ -81,6 +81,7 @@ class RecordsController < ApplicationController
     render :index
   end
 
+  # CSVダウンロード
   def download
     authorize! :download, Record
     if params[:company_industry].present?
@@ -97,6 +98,20 @@ class RecordsController < ApplicationController
   
   def download_page
   end
+
+  # renewした内容を保存する
+  def save_business_description
+    @record = Record.find(params[:id])
+    @record.business_description = params[:business_description]
+    
+    if @record.save
+      render json: { success: true }
+    else
+      render json: { success: false }, status: 422
+    end
+  end
+  
+
 
     # CanCanCanの例外を捉える（ゲストユーザーがリダイレクトされた時）
     rescue_from CanCan::AccessDenied do |exception|

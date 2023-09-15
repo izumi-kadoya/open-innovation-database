@@ -1,4 +1,4 @@
-
+// description renewをクリックするとCHATGPTからデータを再取得する
 document.addEventListener("DOMContentLoaded", function() {
   const api_key = window.apiKey; 
 
@@ -35,3 +35,33 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+
+// saveをクリックするとテーブルに上書き保存する
+document.querySelector("#save_description").addEventListener("click", function() {
+  const newDescription = document.querySelector('#more-description').textContent;
+
+  // ボタンのrecord-id属性からレコードのIDを取得
+  const recordId = this.getAttribute("record-id");
+
+  saveDescription(recordId, newDescription);
+});
+
+function saveDescription(recordId, description) {
+  fetch(`/records/${recordId}/save_business_description`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+    },
+    body: JSON.stringify({ business_description: description })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Description saved successfully!');
+    } else {
+      alert('Error saving description.');
+    }
+  });
+}
