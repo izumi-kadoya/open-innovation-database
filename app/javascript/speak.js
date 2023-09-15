@@ -14,8 +14,23 @@ document.addEventListener("DOMContentLoaded", function() {
     utterance.lang = 'en-US';
     utterance.rate = 1;
 
+    utterance.onstart = function() {
+        console.log("Speech synthesis started");
+    };
+    utterance.onerror = function(event) {
+      console.error("Speech synthesis error:", event.error);
+    };
+    utterance.onend = function() {
+      console.log("Speech synthesis ended");
+    };
+
+    // キューにある発話をキャンセル
+    speechSynthesis.cancel();
+
+    // 発話を開始
     window.speechSynthesis.speak(utterance);
-  }
+}
+
 
   function togglePauseResume() {
     if (speechSynthesis.paused) {
