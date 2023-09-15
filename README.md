@@ -1,4 +1,4 @@
-# アプリケーション名
+[sample.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616000/sample.csv)# アプリケーション名
 open-innovation-database
 
 # アプリケーション概要
@@ -14,8 +14,9 @@ https://open-innovation-database.onrender.com
 ・Basic認証PW  5555
 ・メールアドレス  test@test.com
 ・パスワード  123456
-・アップロード用csv  
- 
+・アップロード用csv  [company_industry,company_name,article_date,business_partner,company_type,country,news_snippet,url,description,business_description,article_summary,text,sector,industry,sub_industry,competitors,founded_year,latest_funding_round,latest_funding_date,latest_funding_amount,latest_funding_simplified_round,latest_funding_investors,total_funding,all_investors,link_date,link,expert_tag,date_added,added_by,date_last_edited,last_edited_by,company_status,exit_date,acquirers,latest_valuation,country,city,comment1,comment2,comment3,comment4
+Non-life Insurance,companyA,45106,partnerA,Vendor,United States,This is news_snippet,sample.com,This is description,This is business_description,This is article_summary,0,Healthcare,This is industry,Hospitals,0,2013,Grant - IV,43724,2,Grant,investorA,6,investorB,0,0,0,45178,sample,45178,sample,Alive / Active,0,0,0,United States,NY,1,2,3,4Uploading sample.csv…]()
+
 　※但し、こちらのアプリケーションは実際に利用予定のため、ローカルのみでアップロードを行ってください。本番環境でのアップロードは行わないでください。  
  
 # 利用方法
