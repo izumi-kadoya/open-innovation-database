@@ -1,4 +1,4 @@
-[sample-data.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616004/sample-data.csv)[sample.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616000/sample.csv)# アプリケーション名
+# アプリケーション名
 open-innovation-database
 
 # アプリケーション概要
@@ -14,7 +14,8 @@ https://open-innovation-database.onrender.com
 ・Basic認証PW  5555
 ・メールアドレス  test@test.com
 ・パスワード  123456
-・アップロード用csv  
+・アップロード用csv 
+[sample-data.csv](https://github.com/izumi-kadoya/open-innovation-database/files/12616004/sample-data.csv)
   最下部にtextを記載
 
 
