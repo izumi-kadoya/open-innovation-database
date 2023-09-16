@@ -1,5 +1,7 @@
 require 'csv'
-
+require 'net/http'
+require 'uri'
+require 'json'
 class RecordsController < ApplicationController
   load_and_authorize_resource
   before_action :set_record, only: [:show, :edit,:partner_details]
@@ -82,6 +84,18 @@ class RecordsController < ApplicationController
     @companies = Record.select('company_name, MIN(id) as id').where(company_industry: params[:industry]).group(:company_name).order(order_key).map { |r| [r.company_name, r.id] }
     render :index
   end
+
+  # API連携でデータを再取得
+  def access_openai_description
+    result = fetch_from_openai(params[:prompt])
+    render json: result
+  end
+
+  def access_openai_summary
+    result = fetch_from_openai(params[:article_summary])
+    render json: result
+  end
+
 
   # CSVダウンロード
   def download
@@ -206,6 +220,26 @@ class RecordsController < ApplicationController
   def valid_csv_file?(uploaded_io)
     File.extname(uploaded_io.original_filename).downcase == ".csv"
   end
+
+ # API連携でデータの再取得
+ def fetch_from_openai(prompt)
+  api_key = ENV['OPENAI_API_SECRET_KEY'] 
+  uri = URI.parse("https://api.openai.com/v1/completions")
+  request = Net::HTTP::Post.new(uri)
+  request["Content-Type"] = "application/json"
+  request["Authorization"] = "Bearer #{api_key}"
+  request.body = JSON.dump({
+    "model": "text-davinci-003",
+    "prompt": prompt,
+    "max_tokens": 400
+  })
+
+  response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+    http.request(request)
+  end
+
+  JSON.parse(response.body)
+ end
 
   # ダウンロード
   def to_csv(records)
