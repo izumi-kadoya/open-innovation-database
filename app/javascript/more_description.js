@@ -1,6 +1,4 @@
-//  renewをクリックするとCHATGPTからデータを再取得する
 document.addEventListener("DOMContentLoaded", function() {
-  const api_key = window.apiKey; 
 
   // ボタンクリック時の処理
   document.querySelector("#description_renew").addEventListener("click", function(event) {
@@ -15,27 +13,29 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function access_openai(prompt) {
-    fetch("https://api.openai.com/v1/completions", {
+    const recordId = document.querySelector("#save_description").getAttribute("record-id");
+
+    fetch(`/records/${recordId}/access_openai_description`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + api_key 
+        "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
       },
-      body: JSON.stringify({
-        "model": "text-davinci-003",
-        "prompt":prompt,
-        "max_tokens": 400,
-      })
+      body: JSON.stringify({ prompt: prompt })
     })
     .then(response => response.json())
     .then(json_data => {
+      if (json_data.error) {
+        console.error("API error:", json_data.error);
+        alert('An error occurred while fetching the description.');
+        return;
+      }
+      console.log(json_data);  
       const result = json_data.choices[0].text.trim();
-      // 結果をmore-descriptionに表示
       document.querySelector('#more-description').textContent = result;
     });
   }
 });
-
 
 // saveをクリックするとテーブルに上書き保存する
 document.querySelector("#save_description").addEventListener("click", function() {
