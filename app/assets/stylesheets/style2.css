@@ -183,7 +183,7 @@ input[type="submit"]:hover {
 }
 .details {
   display: none; /* デフォルトでは非表示 */
-  position: absolute; /* 要素を絶対位置に設定 */
+  position: absolute; 
   top: 0; 
   width:900px;
   left: 100%; 
@@ -294,3 +294,9 @@ input[type="submit"]:hover {
   padding: 10px;
 }
 
+.renew-2{
+  display: flex;
+}
+.renew-2 h3:hover {
+  color: navy;
+}

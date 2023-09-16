@@ -38,12 +38,7 @@
    <p><%= @record.article_date %></p>
    <%= @record.city %>,<%= @record.country %> <br>
    <%= @record.sub_industry %>(Sub-industry)<br><br>
-<h3 id="show-description" data-description="<%= @record.business_description %>">▶️ For more description</h3>
-<button id="description_renew" data-url="<%= @record.url %>">description_renew</button>
-<button id="save_description" record-id="<%= @record.id %>">Save</button>
-<h3 id="show-summary" data-summary="<%= @record.article_summary %>">▶️ Article Summary</h3>
-<button id="article_summary_renew" article_summary="<%= @record.article_summary %>">article summary_renew</button>
-<button id="save_article_summary" record-id="<%= @record.id %>">Save</button>
+
  </div>
  
  <div class="bp-detail-right">
@@ -92,8 +87,25 @@
 </div>
 </div>
 
+<div class="renew">
+ <div class="renew-2">
+ <h3 id="show-description" data-description="<%= @record.business_description %>"> For more description </h3>
+　|　 <h3 id="show-summary" data-summary="<%= @record.article_summary %>"> Article Summary </h3>
+ </div>
+ <div class="renew-3" id="renew-3">
+ <button id="description_renew" data-url="<%= @record.url %>">description_renew</button>
+ <button id="save_description" record-id="<%= @record.id %>">Save</button>
+
+ <button id="article_summary_renew" article_summary="<%= @record.article_summary %>">article summary_renew</button>
+
+ <button id="save_article_summary" record-id="<%= @record.id %>">Save</button>
+
+
 <button id="read-aloud" class="btn btn-primary">Read Aloud</button>
 <button id="toggle-pause" class="btn btn-secondary">Pause/Resume</button>
+</div>
+</div>
+
 <div id="more-description" class="more-description">
 </div>
 
