@@ -9,6 +9,8 @@ class RecordsController < ApplicationController
     order_key = case params[:order_by]
                 when 'company_name'
                   'company_name ASC'
+                when 'company_name_desc'
+                  'company_name DESC'
                 when 'created_at'
                   'MIN(created_at) DESC'
                 else

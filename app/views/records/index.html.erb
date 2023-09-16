@@ -18,7 +18,9 @@
 
   <div class="company-list">
     <div class="company-list-upper">
-     <%= link_to "name 🔼", records_path(order_by: 'company_name')  %>
+    name
+     <%= link_to "🔼", records_path(order_by: 'company_name_asc') %>
+     <%= link_to "🔽", records_path(order_by: 'company_name_desc') %>
      <%= link_to "upload date 🔽", records_path(order_by: 'created_at')  %>
     </div>
    <div class="company-list-body">
