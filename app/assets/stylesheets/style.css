@@ -1,14 +1,13 @@
 
 header.header {
-  padding: 7px;
-  border-bottom: 1px solid #D8D8D8;
-  background-color:#A8E6CF;
+  padding: 3px;
+  background-color:#F3f3f3;;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  height: 50px;
+  height: 35px;
 }
 .grid-6 a{
   font-weight:900;
@@ -16,6 +15,7 @@ header.header {
   margin-left: 15px;
   color: #333;
   font-family: 'Raleway', sans-serif;
+  font-size: 20px;
 }
 
 header.header div.header__bar.row {
@@ -24,7 +24,7 @@ header.header div.header__bar.row {
 
 header.header div.header__bar.row h1.grid-6 {
   font-size: 22px;
-  line-height: 41px;
+  line-height: 30px;
   float: left;
 }
 
@@ -42,44 +42,15 @@ header.header div.header__bar.row div.grid-6 a.post {
   display: inline-left;
   margin-left: 10px;
 }
-.btn-dl,.btn-user{
-  display: inline-block;
-  padding: 6px 12px;
-  font-size: 14px; 
-  font-weight: 600;
-  color: #333; 
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-right: 10px;
-}
-.btn-dl{
-  background-color: rgb(147, 214, 128); 
-}
-.btn-user {
-  background-color: lightgrey; 
-}
 
-.btn-user:hover {
-  background-color: #d4d4d4;
-  transform: scale(1.05); 
+.btn-icon img {
+  width: 19px; 
+  height: 19px; 
+  color: gray;
 }
-
-.btn-user:active {
-  transform: scale(1);
+.btn-icon {
+  margin-right:13px ;
 }
-
-.btn-user.signup {
-  background-color: #f2dede; 
-}
-
-.btn-user.signup:hover {
-  background-color: #e6bdbd; 
-}
-
 
 /* ヘッダーの記述ここまで */
 
