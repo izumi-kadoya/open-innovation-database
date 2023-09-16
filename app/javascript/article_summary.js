@@ -55,3 +55,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+
+// 再生・一時停止ボタンの表示
+document.addEventListener("DOMContentLoaded", function() {
+  const moreDescription = document.getElementById("show-description");
+  const articleSummary = document.getElementById("show-summary");
+  const readAloudBtn = document.getElementById("read-aloud");
+  const togglePauseBtn = document.getElementById("toggle-pause");
+
+  moreDescription.addEventListener("click", function() {
+      readAloudBtn.classList.remove("hidden-btn");
+      togglePauseBtn.classList.remove("hidden-btn");
+  });
+
+  articleSummary.addEventListener("click", function() {
+      readAloudBtn.classList.remove("hidden-btn");
+      togglePauseBtn.classList.remove("hidden-btn");
+  });
+});

@@ -289,14 +289,38 @@ input[type="submit"]:hover {
   width: 100%;
 }
 .more-description{
-  margin: 40px;
+  margin: 20px;
   background-color: #FFFFFF;
   padding: 10px;
 }
-
-.renew-2{
-  display: flex;
-}
-.renew-2 h3:hover {
+.text-navy {
   color: navy;
 }
+.renew-2 span:hover {
+  color: navy;
+}
+.no-style-button,.no-style-button-2 {
+  margin: 5px 5px 0px 5px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+}
+
+.no-style-button:hover,
+.no-style-button:focus {
+  background-color: transparent;
+  color: navy;
+}
+.no-style-button-2 img{
+  width: 16px;
+  height: 16px;
+}
+.hidden-btn {
+  display: none;
+  margin-top: 5px;
+}
+
+

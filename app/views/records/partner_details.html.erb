@@ -89,23 +89,49 @@
 
 <div class="renew">
  <div class="renew-2">
- <h3 id="show-description" data-description="<%= @record.business_description %>"> For more description </h3>
-　|　 <h3 id="show-summary" data-summary="<%= @record.article_summary %>"> Article Summary </h3>
- </div>
- <div class="renew-3" id="renew-3">
- <button id="description_renew" data-url="<%= @record.url %>">description_renew</button>
- <button id="save_description" record-id="<%= @record.id %>">Save</button>
-
- <button id="article_summary_renew" article_summary="<%= @record.article_summary %>">article summary_renew</button>
-
- <button id="save_article_summary" record-id="<%= @record.id %>">Save</button>
-
-
-<button id="read-aloud" class="btn btn-primary">Read Aloud</button>
-<button id="toggle-pause" class="btn btn-secondary">Pause/Resume</button>
-</div>
+<div>
+  <span id="show-description" data-description="<%= @record.business_description %>">More description</span>
+   | 
+  <span id="show-summary" data-summary="<%= @record.article_summary %>">Article Summary</span>
 </div>
 
+<div class="renew-3" id="renew-3">
+  <!-- Descriptionのボタン -->
+  <div id="description-buttons" style="display:none;">
+    <button id="description_renew" data-url="<%= @record.url %>" class="no-style-button">Update</button>
+    <button id="save_description" record-id="<%= @record.id %>" class="no-style-button">Save</button>
+  </div>
+  
+  <!-- Article Summaryのボタン -->
+  <div id="summary-buttons" style="display:none;">
+    <button id="article_summary_renew" article_summary="<%= @record.article_summary %>" class="no-style-button">Update</button>
+    <button id="save_article_summary" record-id="<%= @record.id %>" class="no-style-button">Save</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("show-description").addEventListener("click", function() {
+    document.getElementById("description-buttons").style.display = "block";
+    document.getElementById("summary-buttons").style.display = "none";
+  });
+
+  document.getElementById("show-summary").addEventListener("click", function() {
+    document.getElementById("description-buttons").style.display = "none";
+    document.getElementById("summary-buttons").style.display = "block";
+  });
+</script>
+
+
+
+
+<button id="read-aloud" class="no-style-button-2 hidden-btn">
+  <%= image_tag('play.png', alt: 'Read Aloud') %>
+</button>
+<button id="toggle-pause" class="no-style-button-2 hidden-btn">
+  <%= image_tag('pause.png', alt: 'Pause/Resume') %>
+</button>
+</div>
+</div>
 <div id="more-description" class="more-description">
 </div>
 
