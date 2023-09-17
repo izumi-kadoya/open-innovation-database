@@ -63,7 +63,8 @@ https://open-innovation-database.onrender.com
 
 
 # データベース設計
-![ ER ](https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/6828b4c0-3894-4ca7-bfac-df1fa6ee382e)
+![ ER ](https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/986ac48b-5cd7-452e-bef5-2388e1ffc383)
+
 
 # 実装予定の機能
 ・自然な音声での読み上げが可能なサービスへのAPI連携の切り替え
