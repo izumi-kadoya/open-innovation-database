@@ -123,8 +123,7 @@
 
 
 
-
-<button id="read-aloud" class="no-style-button-2 hidden-btn">
+<button id="read-aloud" class="no-style-button-2 hidden-btn" record-id="<%= @record.id %>">
   <%= image_tag('play.png', alt: 'Read Aloud') %>
 </button>
 <button id="toggle-pause" class="no-style-button-2 hidden-btn">
@@ -139,3 +138,4 @@
 <script>
   var apiKey = "<%= @api_key %>";
 </script>
+<body data-api-key="<%= ENV['GOOGLE_CLOUD_API_KEY'] %>">

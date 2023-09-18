@@ -144,6 +144,40 @@ class RecordsController < ApplicationController
       redirect_to root_path, alert: 'You do not have the necessary permissions. Please log in.'
     end
 
+    def synthesize
+      @api_key = ENV["GOOGLE_CLOUD_API_KEY"]
+    
+      requestBody = {
+        input: {
+          text: params[:text]
+        },
+        voice: {
+          languageCode: "en-US",
+          ssmlGender: "NEUTRAL"
+        },
+        audioConfig: {
+          audioEncoding: "MP3",
+          speakingRate: 1.1 
+        }
+      }
+    
+      uri = URI.parse("https://texttospeech.googleapis.com/v1/text:synthesize?key=#{@api_key}")
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+    
+      request = Net::HTTP::Post.new(uri.request_uri, { "Content-Type" => "application/json" })
+      request.body = requestBody.to_json
+    
+      response = http.request(request)
+    
+      render json: {
+        audioContent: Base64.strict_encode64(response.body), # audioContentをBase64エンコード
+      }
+    end
+    
+  
+    
+
   # ここからprivate
   private
 

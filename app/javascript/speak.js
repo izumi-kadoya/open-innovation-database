@@ -1,42 +1,52 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector("#read-aloud").addEventListener("click", function() {
-    readAloud();
+document.getElementById("read-aloud").addEventListener("click", function(event) {
+  const textToRead = document.getElementById("more-description").innerText;
+  const requestBody = {
+    text: textToRead
+  };
+});
+let isPlaying = false;
+
+document.getElementById("read-aloud").addEventListener("click", function() {
+  const textToRead = document.getElementById("more-description").innerText;
+
+  const requestBody = {
+    text: textToRead
+  };
+
+  // Railsのエンドポイントにリクエストする
+  fetch(`/records/synthesize`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestBody)
+  })
+  .then(response => response.json()) // レスポンスをJSONとして解析
+  .then(data => {
+    // レスポンスデータを使用
+    audio.src = "data:audio/mp3;base64," + data.audioContent;
+    audio.play().then(() => {
+      isPlaying = true;
+    }).catch((error) => {
+      console.error("Audio play failed:", error);
+    });
   });
+});
 
-  document.querySelector("#toggle-pause").addEventListener("click", function() {
-    togglePauseResume();
-  });
-
-  function readAloud() {
-    const textToSpeak = document.querySelector('.more-description').textContent;
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-
-    utterance.onstart = function() {
-        console.log("Speech synthesis started");
-    };
-    utterance.onerror = function(event) {
-      console.error("Speech synthesis error:", event.error);
-    };
-    utterance.onend = function() {
-      console.log("Speech synthesis ended");
-    };
-
-    // キューにある発話をキャンセル
-    speechSynthesis.cancel();
-
-    // 発話を開始
-    window.speechSynthesis.speak(utterance);
+// 一時停止
+function togglePauseResume() {
+  if (isPlaying) {
+    audio.pause();
+    isPlaying = false;
+  } else {
+    audio.play().then(() => {
+      isPlaying = true;
+    }).catch((error) => {
+      console.error("Audio play failed:", error);
+    });
+  }
 }
 
-
-  function togglePauseResume() {
-    if (speechSynthesis.paused) {
-      speechSynthesis.resume();
-    } else if (speechSynthesis.speaking) {
-      speechSynthesis.pause();
-    }
-  }
+document.querySelector("#toggle-pause").addEventListener("click", function() {
+  togglePauseResume();
 });
