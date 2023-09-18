@@ -11,6 +11,7 @@ class CreateRecords < ActiveRecord::Migration[7.0]
       t.text :description
       t.text :business_description
       t.text :news_snippet
+      t.text :article
       t.text :article_summary
       t.string :sub_industry
       t.integer :founded_year

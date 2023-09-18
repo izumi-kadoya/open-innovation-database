@@ -144,7 +144,7 @@ class RecordsController < ApplicationController
       redirect_to root_path, alert: 'You do not have the necessary permissions. Please log in.'
     end
 
-  # ここからprivate
+  ## ここからprivate ##
   private
 
   def set_record
@@ -163,6 +163,7 @@ class RecordsController < ApplicationController
       :description,
       :business_description,
       :news_snippet,
+      :article,
       :article_summary,
       :sub_industry,
       :founded_year,
@@ -200,6 +201,7 @@ class RecordsController < ApplicationController
       description: row['description'],
       business_description: row['business_description'],
       news_snippet: row['news_snippet'],
+      article: row['article'],
       article_summary: row['article_summary'],
       sub_industry: row['sub_industry'],
       founded_year: row['founded_year'].to_i,
@@ -256,6 +258,7 @@ class RecordsController < ApplicationController
         "description",
         "business_description",
         "news_snippet",
+        "article",
         "article_summary",
         "sub_industry",
         "founded_year",
@@ -285,6 +288,7 @@ class RecordsController < ApplicationController
           record.description,
           record.business_description,
           record.news_snippet,
+          record.article,
           record.article_summary,
           record.sub_industry,
           record.founded_year,
