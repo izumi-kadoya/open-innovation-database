@@ -63,7 +63,8 @@ https://open-innovation-database.onrender.com
 
 
 # データベース設計
-![Uploading  ER .png…]()
+![ ER ](https://github.com/izumi-kadoya/open-innovation-database/assets/140796896/22dfdebb-cafb-48e0-b35b-6257819169b0)
+
 
 
 
