@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 記事の要約を再取得する
   document.querySelector("#article_summary_renew").addEventListener("click", function(event) {
-    const article_summary = event.target.dataset.article_summary;
-    const prompt = `Summarize the article that includes this line:${article_summary}`;
+    const news_snippet = event.target.getAttribute('news_snippet');
+    const prompt = `Summarize the news that includes this line: ${news_snippet}`;
+    access_openai_for_summary(prompt);
     access_openai_for_summary(prompt);
   });
 

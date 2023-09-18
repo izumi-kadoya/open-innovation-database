@@ -85,17 +85,6 @@ class RecordsController < ApplicationController
     render :index
   end
 
-  # API連携でデータを再取得
-  def access_openai_description
-    result = fetch_from_openai(params[:prompt])
-    render json: result
-  end
-
-  def access_openai_summary
-    result = fetch_from_openai(params[:article_summary])
-    render json: result
-  end
-
 
   # CSVダウンロード
   def download
@@ -115,6 +104,17 @@ class RecordsController < ApplicationController
   def download_page
   end
 
+
+  # API連携でデータを再取得
+  def access_openai_description
+    result = fetch_from_openai(params[:prompt])
+    render json: result
+  end
+
+  def access_openai_summary
+    result = fetch_from_openai(params[:article_summary])
+    render json: result
+  end
   # renewした内容を保存する
   def save_business_description
     @record = Record.find(params[:id])
