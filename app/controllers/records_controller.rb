@@ -141,7 +141,6 @@ class RecordsController < ApplicationController
 
   def text_to_speech
     text = params[:text]
-  
     api_key = ENV['GOOGLE_CLOUD_API_KEY']
   
     response = fetch_text_to_speech(api_key, text)
@@ -152,29 +151,6 @@ class RecordsController < ApplicationController
       render json: { error: "Failed to get audio. Reason: #{response.body}" }, status: :bad_request
     end
   end
-  
-  def fetch_text_to_speech(api_key, text)
-    uri = URI.parse("https://texttospeech.googleapis.com/v1/text:synthesize?key=#{api_key}")
-  
-    request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-    request.body = JSON.dump({
-                               input: {
-                                 text: text
-                               },
-                               voice: {
-                                 languageCode: 'en-US',
-                                 ssmlGender: 'NEUTRAL'
-                               },
-                               audioConfig: {
-                                 audioEncoding: 'MP3'
-                               }
-                             })
-  
-    Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-      http.request(request)
-    end
-  end
-  
 
   # CanCanCanの例外を捉える（ゲストユーザーがリダイレクトされた時）
   rescue_from CanCan::AccessDenied do |_exception|
@@ -283,6 +259,28 @@ class RecordsController < ApplicationController
     JSON.parse(response.body)
   end
 
+  # 読み上げ
+  def fetch_text_to_speech(api_key, text)
+    uri = URI.parse("https://texttospeech.googleapis.com/v1/text:synthesize?key=#{api_key}")
+  
+    request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    request.body = JSON.dump({
+                               input: {
+                                 text: text
+                               },
+                               voice: {
+                                 languageCode: 'en-US',
+                                 ssmlGender: 'NEUTRAL'
+                               },
+                               audioConfig: {
+                                 audioEncoding: 'MP3'
+                               }
+                             })
+  
+    Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+  end
   # ダウンロード
   def to_csv(records)
     CSV.generate(headers: true) do |csv|
