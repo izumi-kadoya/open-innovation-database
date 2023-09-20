@@ -149,7 +149,7 @@ class RecordsController < ApplicationController
     if response.code == "200"
       render json: { audioContent: JSON.parse(response.body)["audioContent"] }
     else
-      render json: { error: "Failed to get audio." }, status: :bad_request
+      render json: { error: "Failed to get audio. Reason: #{response.body}" }, status: :bad_request
     end
   end
   
