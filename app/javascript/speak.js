@@ -1,42 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector("#read-aloud").addEventListener("click", function() {
-    readAloud();
-  });
+let audio;
+let isPlaying = false;
+let isLoaded = false;
 
-  document.querySelector("#toggle-pause").addEventListener("click", function() {
-    togglePauseResume();
-  });
+document.getElementById("read-aloud").addEventListener("click", function() {
+  if (!isLoaded) { // 初めてのクリック
+    var text = document.querySelector(".more-description").innerText;
 
-  function readAloud() {
-    const textToSpeak = document.querySelector('.more-description').textContent;
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    fetch('/records/text_to_speech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({ text: text })
+    })
+    .then(response => response.json())
+    .then(data => {
+      audio = new Audio('data:audio/mp3;base64,' + data.audioContent);
+      audio.play();
+      isPlaying = true;
+      isLoaded = true;
 
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
+      audio.addEventListener("ended", function() { // 音声が終わった場合のリセット
+        isPlaying = false;
+        isLoaded = false;
+      });
+    });
 
-    utterance.onstart = function() {
-        console.log("Speech synthesis started");
-    };
-    utterance.onerror = function(event) {
-      console.error("Speech synthesis error:", event.error);
-    };
-    utterance.onend = function() {
-      console.log("Speech synthesis ended");
-    };
-
-    // キューにある発話をキャンセル
-    speechSynthesis.cancel();
-
-    // 発話を開始
-    window.speechSynthesis.speak(utterance);
-}
-
-
-  function togglePauseResume() {
-    if (speechSynthesis.paused) {
-      speechSynthesis.resume();
-    } else if (speechSynthesis.speaking) {
-      speechSynthesis.pause();
+  } else {
+    if (isPlaying) { // 既に再生中の場合、一時停止する
+      audio.pause();
+      isPlaying = false;
+    } else { // 一時停止中の場合、再開する
+      audio.play();
+      isPlaying = true;
     }
   }
 });

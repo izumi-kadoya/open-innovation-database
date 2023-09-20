@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     collection do
       post 'access_openai_summary' 
+      post 'text_to_speech'
       get 'filter_by_industry'
       get 'download'
       get 'download_page'  
