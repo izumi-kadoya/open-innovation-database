@@ -153,8 +153,6 @@ class RecordsController < ApplicationController
     end
   end
   
-  private
-  
   def fetch_text_to_speech(api_key, text)
     uri = URI.parse("https://texttospeech.googleapis.com/v1/text:synthesize?key=#{api_key}")
   
