@@ -1,42 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelector("#read-aloud").addEventListener("click", function() {
-    readAloud();
+document.getElementById("read-aloud").addEventListener("click", function() {
+  var text = document.querySelector(".more-description").innerText;
+  var apiKey = document.body.getAttribute("data-google-cloud-api-key");
+
+
+  fetch('https://texttospeech.googleapis.com/v1/text:synthesize?key=' + apiKey, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      input: {
+        text: text
+      },
+      voice: {
+        languageCode: 'en-US',
+        ssmlGender: 'NEUTRAL'
+      },
+      audioConfig: {
+        audioEncoding: 'MP3'
+      }
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    var audio = new Audio('data:audio/mp3;base64,' + data.audioContent);
+    audio.play();
   });
-
-  document.querySelector("#toggle-pause").addEventListener("click", function() {
-    togglePauseResume();
-  });
-
-  function readAloud() {
-    const textToSpeak = document.querySelector('.more-description').textContent;
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-
-    utterance.onstart = function() {
-        console.log("Speech synthesis started");
-    };
-    utterance.onerror = function(event) {
-      console.error("Speech synthesis error:", event.error);
-    };
-    utterance.onend = function() {
-      console.log("Speech synthesis ended");
-    };
-
-    // キューにある発話をキャンセル
-    speechSynthesis.cancel();
-
-    // 発話を開始
-    window.speechSynthesis.speak(utterance);
-}
-
-
-  function togglePauseResume() {
-    if (speechSynthesis.paused) {
-      speechSynthesis.resume();
-    } else if (speechSynthesis.speaking) {
-      speechSynthesis.pause();
-    }
-  }
 });
+
