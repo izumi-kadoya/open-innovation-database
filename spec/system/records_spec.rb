@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'CSVアップロード', type: :system do
   before do
-    @user = FactoryBot.create(:user, admin: 1) 
+    @user = FactoryBot.create(:user, admin: 1)
     @csv_file_path = Rails.root.join('spec', 'fixtures', 'sample.csv')  # spec/fixturesディレクトリにsample.csvというサンプルCSVがあると仮定
   end
 
@@ -19,7 +19,7 @@ RSpec.describe 'CSVアップロード', type: :system do
 
       # CSVファイルをアップロードする
       attach_file('record[csv]', @csv_file_path)
-      click_on 'Upload' 
+      click_on 'Upload'
 
       # DBの変更を確認する
       expect(Record.count).to eq(1)

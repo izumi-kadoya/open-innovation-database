@@ -7,8 +7,8 @@ class User < ApplicationRecord
   def admin?
     admin
   end
+
   def approved?
     approved
   end
-
 end
