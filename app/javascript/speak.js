@@ -4,8 +4,8 @@ let isLoaded = false;
 
 document.getElementById("read-aloud").addEventListener("click", function() {
   if (!isLoaded) { // 初めてのクリック
-    var text = document.querySelector(".more-description").innerText;
-    const recordId = this.getAttribute("record-id");
+    var text = document.querySelector('.more-description').innerText;
+    const recordId = this.getAttribute('record-id');
     fetch(`/records/${recordId}/text_to_speech`, {
       method: 'POST',
       headers: {
