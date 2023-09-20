@@ -7,10 +7,10 @@ Rails.application.routes.draw do
       post 'save_article_summary'
       post 'access_openai_description'
       post 'save_business_description'
+      post 'text_to_speech'
     end
     collection do
       post 'access_openai_summary' 
-      post 'text_to_speech'
       get 'filter_by_industry'
       get 'download'
       get 'download_page'  
