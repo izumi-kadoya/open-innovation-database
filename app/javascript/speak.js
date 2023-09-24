@@ -38,13 +38,3 @@ document.getElementById("read-aloud").addEventListener("click", function() {
     }
   }
 });
-
-// 停止する
-document.getElementById("stop-aloud").addEventListener("click", function() {
-  if (isLoaded && isPlaying) {
-    audio.pause();
-    audio.currentTime = 0; // オーディオの再生位置を初期位置にリセット
-    isPlaying = false;
-    isLoaded = false; 
-  }
-});
