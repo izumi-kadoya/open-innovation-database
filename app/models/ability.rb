@@ -12,8 +12,6 @@ class Ability
       can [:edit, :update], :all # 一般ユーザーは編集・更新可能
       cannot [:new, :create], :all # 一般ユーザーは新規作成不可
       cannot [:new, :create, :edit, :update, :destroy], User
-    else
-      can :index, Record # ゲストユーザーはトップページのみ閲覧可能
     end
   end
 end

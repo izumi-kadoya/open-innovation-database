@@ -3,6 +3,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 class RecordsController < ApplicationController
+  before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_record, only: [:show, :edit, :partner_details]
 
