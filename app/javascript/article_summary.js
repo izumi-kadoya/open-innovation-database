@@ -63,12 +63,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const moreDescription = document.getElementById("show-description");
   const articleSummary = document.getElementById("show-summary");
   const readAloudBtn = document.getElementById("read-aloud");
+  const readStopBtn = document.getElementById("read-stop");
 
   moreDescription.addEventListener("click", function() {
       readAloudBtn.classList.remove("hidden-btn");
+      readStopBtn.classList.remove("hidden-btn"); 
   });
 
   articleSummary.addEventListener("click", function() {
       readAloudBtn.classList.remove("hidden-btn");
+      readStopBtn.classList.remove("hidden-btn");
   });
 });
