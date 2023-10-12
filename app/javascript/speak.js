@@ -38,3 +38,14 @@ document.getElementById("read-aloud").addEventListener("click", function() {
     }
   }
 });
+
+
+// 再生ストップ
+document.getElementById("read-stop").addEventListener("click", function() {
+  if (audio && isLoaded) {
+    audio.pause(); 
+    audio.currentTime = 0;
+    isPlaying = false;
+    isLoaded = false;
+  }
+});
